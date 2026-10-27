@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WBench20 验收 · 全题内嵌播放</title>
+<title>WBench20 验收 · 人形骨架重写</title>
 <style>
   :root {
     --bg: #f6f4ef; --card: #ffffff; --ink: #1a1a1a; --muted: #5c5c5c; --line: #e6e2d8;
@@ -45,34 +45,294 @@
   figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
   .side-block { margin-bottom: 16px; }
   .video-block video { max-height: 520px; object-fit: contain; }
+
+  .badge.hum { background: #eff8ff; color: #175cd3; }
+  .nav a.hum { background: #eff8ff; color: #175cd3; border-color: #b2ddff; }
+  .blurb { background: #eff8ff; color: #1849a9; border-radius: 12px; padding: 14px 16px; margin: 0 0 20px; font-size: 0.98rem; }
+  .card.hum-card { border-color: #b2ddff; }
+  a.link { color: #175cd3; text-decoration: none; }
+  a.link:hover { text-decoration: underline; }
   footer { margin-top: 48px; color: var(--muted); font-size: 0.9rem; }
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1>WBench20 验收页</h1>
-    <p class="lede">结论先行。FAIL 四题要过目；PASS 十五题 + #4 金样也都可直接看、页内播，不用下载。</p>
+    <p class="lede">2026-10-27 更新：9 道人形题已用 <code>createHumanoidWorld</code> + <code>humanoid.uefn-mannequin</code> 重写并通过（见首区）。原有非人形 PASS/FAIL 卡全部保留；Lane1 构图硬 FAIL 现剩 #136 / #33。</p>
 
     <div class="summary">
-      <div class="pill"><div class="label">总览</div><div class="value">20 题 · 15 PASS · 4 FAIL · 1 金样</div></div>
-      <div class="pill"><div class="label">Lane2 / 3 / 4</div><div class="value"><span class="badge pass">PASS</span> 各 5 题</div></div>
-      <div class="pill"><div class="label">Lane1 新做</div><div class="value"><span class="badge fail">FAIL</span> #136 #33 #3 #16</div></div>
-      <div class="pill"><div class="label">Lane1 #4</div><div class="value"><span class="badge skip">SKIP</span> 金样</div></div>
+      <div class="pill"><div class="label">人形骨架重写</div><div class="value"><span class="badge hum">9 PASS</span> · #2/3/6/9/14/16/20/21/22</div></div>
+      <div class="pill"><div class="label">非人形 PASS + 金样</div><div class="value"><span class="badge pass">PASS</span> · 原卡保留</div></div>
+      <div class="pill"><div class="label">Lane1 构图 FAIL</div><div class="value"><span class="badge fail">2 FAIL</span> · #136 / #33</div></div>
+      <div class="pill"><div class="label">标准</div><div class="value">人形 + 走路 clips · 无投影</div></div>
     </div>
 
     <nav class="nav" aria-label="分段跳转">
+      <a class="hum" href="#sec-humanoid">人形 9 PASS</a>
       <a class="fail" href="#lane1-case136">FAIL #136</a>
       <a class="fail" href="#lane1-case33">FAIL #33</a>
-      <a class="fail" href="#lane1-case3">FAIL #3</a>
-      <a class="fail" href="#lane1-case16">FAIL #16</a>
       <a href="#lane1-case4">#4 金样</a>
       <a class="pass" href="#lane2-case13">Lane2</a>
       <a class="pass" href="#lane3-case45">Lane3</a>
       <a class="pass" href="#lane4-case58">Lane4</a>
     </nav>
 
-    <h2 class="section-title" id="sec-需要过目 · L">需要过目 · Lane1 构图 FAIL</h2>
-    <p class="section-note">材料 / norectex / WASD 过了；卡在官方首帧构图锁。</p>
+    <h2 class="section-title" id="sec-humanoid">人形骨架重写</h2>
+    <p class="section-note">官方首帧 | opening-gate；侧视图确认体积；页内嵌 motion。每题一行 ACCEPT 要点。NAS 抽查：main.ts 含 createHumanoidWorld；ACCEPT PASS；motion-30fps.mp4 &gt;1MB。</p>
+    <article class="card hum-card" id="hum-case2">
+      <div class="card-head">
+        <h2>#2</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L4</span>
+      </div>
+      <p class="blurb"><strong>L4 · 沙漠宇航员 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路 clips；走姿交替抬腿；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case2/official.jpg" alt="官方首帧 #2" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case2/opening.jpg" alt="opening-gate #2" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case2/side.jpg" alt="side-gate #2" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case2/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case3">
+      <div class="card-head">
+        <h2>#3</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L1</span>
+      </div>
+      <p class="blurb"><strong>L1 · 田径运动员 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/GASP 走路；走姿交替迈步；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case3/official.jpg" alt="官方首帧 #3" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case3/opening.jpg" alt="opening-gate #3" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case3/side.jpg" alt="side-gate #3" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case3/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case6">
+      <div class="card-head">
+        <h2>#6</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L2</span>
+      </div>
+      <p class="blurb"><strong>L2 · 僧侣 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿抬腿膝屈；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case6/official.jpg" alt="官方首帧 #6" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case6/opening.jpg" alt="opening-gate #6" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case6/side.jpg" alt="side-gate #6" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case6/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case9">
+      <div class="card-head">
+        <h2>#9</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L3</span>
+      </div>
+      <p class="blurb"><strong>L3 · 红外套幼儿 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿交替抬腿；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case9/official.jpg" alt="官方首帧 #9" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case9/opening.jpg" alt="opening-gate #9" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case9/side.jpg" alt="side-gate #9" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case9/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case14">
+      <div class="card-head">
+        <h2>#14</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L4</span>
+      </div>
+      <p class="blurb"><strong>L4 · 白衬衫青年 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿腿臂摆动；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case14/official.jpg" alt="官方首帧 #14" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case14/opening.jpg" alt="opening-gate #14" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case14/side.jpg" alt="side-gate #14" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case14/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case16">
+      <div class="card-head">
+        <h2>#16</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L1</span>
+      </div>
+      <p class="blurb"><strong>L1 · 登山者 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿膝屈抬脚；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case16/official.jpg" alt="官方首帧 #16" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case16/opening.jpg" alt="opening-gate #16" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case16/side.jpg" alt="side-gate #16" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case16/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case20">
+      <div class="card-head">
+        <h2>#20</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L2</span>
+      </div>
+      <p class="blurb"><strong>L2 · 禅园女子 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿 OK；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case20/official.jpg" alt="官方首帧 #20" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case20/opening.jpg" alt="opening-gate #20" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case20/side.jpg" alt="side-gate #20" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case20/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case21">
+      <div class="card-head">
+        <h2>#21</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L3</span>
+      </div>
+      <p class="blurb"><strong>L3 · 海滩青年 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿交替迈步；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case21/official.jpg" alt="官方首帧 #21" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case21/opening.jpg" alt="opening-gate #21" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case21/side.jpg" alt="side-gate #21" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case21/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <article class="card hum-card" id="hum-case22">
+      <div class="card-head">
+        <h2>#22</h2>
+        <span class="badge pass">PASS</span>
+        <span class="badge hum">人形</span>
+        <span class="lane-tag">L4</span>
+      </div>
+      <p class="blurb"><strong>L4 · 红夹克女子 · ACCEPT：</strong>uefn-mannequin + createHumanoidWorld；默认跟镜/走路；走姿膝屈抬脚；无投影。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/humanoid/case22/official.jpg" alt="官方首帧 #22" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/humanoid/case22/opening.jpg" alt="opening-gate #22" loading="lazy" />
+          <figcaption>opening-gate（人形重写）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/humanoid/case22/side.jpg" alt="side-gate #22" loading="lazy" />
+        <figcaption>side-gate（骨架体积）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/humanoid/case22/motion.mp4"></video>
+        <figcaption>motion · 页内播放（web 版）</figcaption>
+      </figure>
+    </article>
+
+    <h2 class="section-title" id="sec-需要过目 · L">需要过目 · Lane1 构图 FAIL（非人形）</h2>
+    <p class="section-note">材料 / norectex / WASD 过了；卡在官方首帧构图锁。#3 / #16 已人形重写，见上方专区（下方旧 FAIL 卡保留备查）。</p>
     <article class="card" id="lane1-case136">
       <div class="card-head">
         <h2>#136</h2>
@@ -130,10 +390,11 @@
     <article class="card" id="lane1-case3">
       <div class="card-head">
         <h2>#3</h2>
-        <span class="badge fail">FAIL · 构图</span>
-        <span class="lane-tag">LANE1</span>
+        <span class="badge hum">已迁人形 PASS</span>
+        <span class="lane-tag">LANE1 · 旧构图 FAIL 备查</span>
       </div>
-      <p class="why"><strong>为什么 FAIL：</strong>运动员落点、记分牌、看台层与栏架大致按像素坐标放了，但屋顶构造、座位透视、解剖细节与部分道具轮廓仍明显近似。</p>
+      <p class="why pass"><strong>已更新：</strong>构图 FAIL 旧卡保留备查；人形重写见 <a class="link" href="#hum-case3">#hum-case3</a>。</p>
+      <p class="why"><strong>旧 FAIL 原因：</strong>运动员落点、记分牌、看台层与栏架大致按像素坐标放了，但屋顶构造、座位透视、解剖细节与部分道具轮廓仍明显近似。</p>
       <div class="pair">
         <figure>
           <img src="media/lane1/case3/official.jpg" alt="官方首帧 #3" loading="lazy" />
@@ -157,10 +418,11 @@
     <article class="card" id="lane1-case16">
       <div class="card-head">
         <h2>#16</h2>
-        <span class="badge fail">FAIL · 构图 / 剪影</span>
-        <span class="lane-tag">LANE1</span>
+        <span class="badge hum">已迁人形 PASS</span>
+        <span class="lane-tag">LANE1 · 旧构图 FAIL 备查</span>
       </div>
-      <p class="why"><strong>为什么 FAIL：</strong>主体大致位置、山峰与湖面地平线有量测，但身体轮廓、雪斑、林缘、岸线与岩石分布仍可见偏差。</p>
+      <p class="why pass"><strong>已更新：</strong>构图 FAIL 旧卡保留备查；人形重写见 <a class="link" href="#hum-case16">#hum-case16</a>。</p>
+      <p class="why"><strong>旧 FAIL 原因：</strong>主体大致位置、山峰与湖面地平线有量测，但身体轮廓、雪斑、林缘、岸线与岩石分布仍可见偏差。</p>
       <div class="pair">
         <figure>
           <img src="media/lane1/case16/official.jpg" alt="官方首帧 #16" loading="lazy" />
@@ -620,7 +882,7 @@
 
     <footer>
       公开验收仓 <code>oricter/wbench20-review-20261027</code>。运动片为 720p web 版；原片仍在 private release。Lane2 无独立 side-gate 时用录制中段帧代替。未碰鲁班 pod，未拷 Mac。
-    </footer>
+     人形专区已更新。</footer>
   </div>
 </body>
 </html>
