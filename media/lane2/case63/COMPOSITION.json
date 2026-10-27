@@ -1,0 +1,44 @@
+{
+  "pass": true,
+  "official": "official-first-frame.jpg",
+  "opening": "opening-gate.jpg",
+  "mask": "subject-mask.png",
+  "subject_bbox_official": [
+    227,
+    157,
+    405,
+    222
+  ],
+  "subject_bbox_opening": [
+    219,
+    154,
+    411,
+    224
+  ],
+  "subject_cx_official": 0.4938,
+  "subject_cy_official": 0.5264,
+  "subject_cx_opening": 0.4922,
+  "subject_cy_opening": 0.525,
+  "subject_area_official": 0.0502,
+  "subject_area_opening": 0.0583,
+  "subject_cx_delta": 0.0016,
+  "subject_cy_delta": 0.0014,
+  "subject_area_rel": 0.1616,
+  "horizon_official": 0.425,
+  "horizon_opening": 0.4306,
+  "horizon_delta": 0.0056,
+  "gray_mae": 43.53,
+  "upper_fill_official": 0.9436,
+  "upper_fill_opening": 0.9896,
+  "upper_fill_delta": 0.046,
+  "thresholds": {
+    "cx": 0.08,
+    "cy": 0.08,
+    "area_rel": 0.25,
+    "horizon": 0.06,
+    "upper_fill": 0.18
+  },
+  "reasons": [
+    "within_thresholds"
+  ]
+}
