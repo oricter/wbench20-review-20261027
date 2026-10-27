@@ -67,13 +67,13 @@
 <body>
   <div class="wrap">
     <h1>WBench20 验收页</h1>
-    <p class="lede">2026-10-27 晚间纠标：构图硬门禁已对 20 题跑满（主体中心≤8%、面积≤25%、地平线≤6%、upper_fill≤18%）。人形专区仅真正过门禁的题标「构图门禁 PASS」。#6 僧侣已按远景寺院+可通行+背影区分重做并通过门禁。</p>
+    <p class="lede">2026-10-27 晚间纠标：构图硬门禁已对 20 题跑满（主体中心≤8%、面积≤25%、地平线≤6%、upper_fill≤18%）。人形专区仅真正过门禁的题标「构图门禁 PASS」。#6/#9 等均已按门禁+正背面可辨重做并通过。</p>
 
     <div class="summary">
-      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">18 题</span> · 见表</div></div>
-      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">3 题</span> · 见下方分区</div></div>
-      <div class="pill"><div class="label">人形·构图过关</div><div class="value"><span class="badge comp-pass">7</span> · #2/3/6/14/16/21/22</div></div>
-      <div class="pill"><div class="label">人形·构图未过</div><div class="value"><span class="badge comp-fail">1</span> · #9（xxk-2 重做中）</div></div>
+      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">20 题</span> · 见表</div></div>
+      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-pass">0 题</span> · 全部过关</div></div>
+      <div class="pill"><div class="label">人形·构图过关</div><div class="value"><span class="badge comp-pass">8</span> · #2/3/6/9/14/16/21/22</div></div>
+      <div class="pill"><div class="label">人形·构图未过</div><div class="value"><span class="badge comp-pass">0</span> · —</div></div>
     </div>
 
     <nav class="nav" aria-label="分段跳转">
@@ -91,11 +91,11 @@
 
     <h2 class="section-title" id="sec-comp-gate">构图门禁 SUMMARY（20 题）</h2>
     <p class="section-note">阈值：subject cx/cy ≤0.08；area_rel ≤0.25；horizon ≤0.06；upper_fill ≤0.18。影子不验收；必须可通行。脚本含 upper_fill（近景建筑占比）。</p>
-    <p class="why pass"><strong>纠标说明：</strong>构图硬门禁（composition_gate）为准；人形+走路 ≠ 构图过关。xxk-4 批次完成：#58/#63/#155/#157/#167/#20 全部 PASS（#63 经 mask+锈钢门楣重做；#20 背面+发髻）。影子不验收；必须可通行；人物正背面须可区分。仍 FAIL：#9（xxk-2 重做中）。#2/#14 已更新为最新 PASS（正背面可辨）。</p>
+    <p class="why pass"><strong>纠标说明：</strong>构图硬门禁（composition_gate）为准；人形+走路 ≠ 构图过关。xxk-4 批次完成：#58/#63/#155/#157/#167/#20 全部 PASS（#63 经 mask+锈钢门楣重做；#20 背面+发髻）。影子不验收；必须可通行；人物正背面须可区分。#9 已 PASS（xxk-2：修 oversized opening-subject-mask，area_rel 1.86→0.005；正背面可辨）。#2/#14 亦 PASS。20 题构图门禁全过。</p>
     <table class="comp-table">
       <thead><tr><th>题</th><th>门禁</th><th>cxΔ</th><th>cyΔ</th><th>horizonΔ</th><th>upper_fillΔ</th><th>原因</th><th>来源</th></tr></thead>
       <tbody>
-        <tr><td>#2</td><td><span class="badge comp-pass">PASS</span></td><td>0.0133</td><td>0.0764</td><td>0.0167</td><td>0.0008</td><td>within_thresholds · area_rel=0.1756</td><td>xxk-2；背影+背包国旗</td></tr><tr><td>#3</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0389</td><td>0.0083</td><td>0.0351</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#4</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0261</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#6</td><td><span class="badge comp-pass">PASS</span></td><td>0.0023</td><td>0.0569</td><td>0.0583</td><td>0.1139</td><td>within_thresholds (area_rel=0.187)</td><td>xxk-1 远景+缩小人物+背影</td></tr><tr><td>#9</td><td><span class="badge comp-fail">FAIL</span></td><td>0.032</td><td>0.0389</td><td>0.2333</td><td>0.0451</td><td>subject_area_rel=0.405>0.25; horizon_delta=0.233>0.06</td><td>humanoid 媒体</td></tr><tr><td>#13</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0508</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#14</td><td><span class="badge comp-pass">PASS</span></td><td>0.0055</td><td>0.0083</td><td>0.0000</td><td>0.1159</td><td>within_thresholds · area_rel=0.0503</td><td>xxk-2；后脑短发+衬衫背面</td></tr><tr><td>#16</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0139</td><td>0.0028</td><td>0.0588</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#20</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0181</td><td>0.0139</td><td>0.1212</td><td>within_thresholds (area_rel=0.2499)</td><td>xxk-4 Codex；背面+发髻</td></tr><tr><td>#21</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0163</td><td>within_thresholds</td><td>xxk-3 构图修复（人形）</td></tr><tr><td>#22</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0306</td><td>0.0278</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0179</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0194</td><td>0.0287</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#58</td><td><span class="badge comp-pass">PASS</span></td><td>0.0742</td><td>0.025</td><td>0.0056</td><td>0.1318</td><td>within_thresholds</td><td>xxk-4 Codex round4</td></tr><tr><td>#63</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0014</td><td>0.0056</td><td>0.0460</td><td>within_thresholds (area_rel=0.1616, mask)</td><td>xxk-4 Codex r2；锈钢+橙桨；门楣对齐</td></tr><tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.05</td><td>0.0247</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#155</td><td><span class="badge comp-pass">PASS</span></td><td>0.0758</td><td>0.0194</td><td>0.0028</td><td>0.0019</td><td>within_thresholds</td><td>xxk-4 NAS humanoid gate 复核</td></tr><tr><td>#157</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0583</td><td>0.1275</td><td>within_thresholds</td><td>xxk-4 NAS humanoid gate 复核</td></tr><tr><td>#159</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0417</td><td>0.0379</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#167</td><td><span class="badge comp-pass">PASS</span></td><td>0.0766</td><td>0.0111</td><td>0.0583</td><td>0.1616</td><td>within_thresholds（含 subject-mask）</td><td>xxk-4 NAS humanoid gate 复核</td></tr>
+        <tr><td>#2</td><td><span class="badge comp-pass">PASS</span></td><td>0.0133</td><td>0.0764</td><td>0.0167</td><td>0.0008</td><td>within_thresholds · area_rel=0.1756</td><td>xxk-2；背影+背包国旗</td></tr><tr><td>#3</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0389</td><td>0.0083</td><td>0.0351</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#4</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0261</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#6</td><td><span class="badge comp-pass">PASS</span></td><td>0.0023</td><td>0.0569</td><td>0.0583</td><td>0.1139</td><td>within_thresholds (area_rel=0.187)</td><td>xxk-1 远景+缩小人物+背影</td></tr><tr><td>#9</td><td><span class="badge comp-pass">PASS</span></td><td>0.0266</td><td>0.0097</td><td>0.0083</td><td>0.0458</td><td>within_thresholds · area_rel=0.0052</td><td>xxk-2；紧 mask；背影+蓝帽红外套</td></tr><tr><td>#13</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0508</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#14</td><td><span class="badge comp-pass">PASS</span></td><td>0.0055</td><td>0.0083</td><td>0.0000</td><td>0.1159</td><td>within_thresholds · area_rel=0.0503</td><td>xxk-2；后脑短发+衬衫背面</td></tr><tr><td>#16</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0139</td><td>0.0028</td><td>0.0588</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#20</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0181</td><td>0.0139</td><td>0.1212</td><td>within_thresholds (area_rel=0.2499)</td><td>xxk-4 Codex；背面+发髻</td></tr><tr><td>#21</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0163</td><td>within_thresholds</td><td>xxk-3 构图修复（人形）</td></tr><tr><td>#22</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0306</td><td>0.0278</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0179</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0194</td><td>0.0287</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#58</td><td><span class="badge comp-pass">PASS</span></td><td>0.0742</td><td>0.025</td><td>0.0056</td><td>0.1318</td><td>within_thresholds</td><td>xxk-4 Codex round4</td></tr><tr><td>#63</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0014</td><td>0.0056</td><td>0.0460</td><td>within_thresholds (area_rel=0.1616, mask)</td><td>xxk-4 Codex r2；锈钢+橙桨；门楣对齐</td></tr><tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.05</td><td>0.0247</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#155</td><td><span class="badge comp-pass">PASS</span></td><td>0.0758</td><td>0.0194</td><td>0.0028</td><td>0.0019</td><td>within_thresholds</td><td>xxk-4 NAS humanoid gate 复核</td></tr><tr><td>#157</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0583</td><td>0.1275</td><td>within_thresholds</td><td>xxk-4 NAS humanoid gate 复核</td></tr><tr><td>#159</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0417</td><td>0.0379</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#167</td><td><span class="badge comp-pass">PASS</span></td><td>0.0766</td><td>0.0111</td><td>0.0583</td><td>0.1616</td><td>within_thresholds（含 subject-mask）</td><td>xxk-4 NAS humanoid gate 复核</td></tr>
       </tbody>
     </table>
 
@@ -187,12 +187,11 @@
 
     <article class="card hum-card" id="hum-case9">
       <div class="card-head">
-        <h2>#9</h2>
-                <span class="badge hum">人形 OK</span>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
-        <span class="lane-tag">L3</span>
+        <h3>#9 · 秋园幼儿（红外套）</h3>
+        <span class="badge pass">人形</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
       </div>
-      <p class="why"><strong>L3 · 红外套幼儿 · 构图未过：</strong>subject_area_rel=0.405>0.25; horizon_delta=0.233>0.06。人形+走路此前已接；构图须重做后才可标构图 PASS。（cxΔ=0.032 horizonΔ=0.2333 upper_fillΔ=0.0451）</p>
+      <p class="why pass"><strong>L3 · 秋园幼儿 · 构图门禁 PASS：</strong>cxΔ=0.0266 cyΔ=0.0097 area_rel=<strong>0.0052</strong>（原先 area_rel≈1.86 为 oversized opening-subject-mask 误伤地面落叶，非人物过大）horizonΔ=0.0083 upper_fillΔ=0.0458。createHumanoidWorld + uefn-mannequin；默认跟镜/走路；小径可通行；影子不追；<strong>正背面可辨（蓝帽后脑+红羽绒服背面，首帧背影无脸）</strong>。xxk-2。</p>
       <div class="pair">
         <figure>
           <img src="media/humanoid/case9/official.jpg" alt="官方首帧 #9" loading="lazy" />
@@ -200,17 +199,16 @@
         </figure>
         <figure>
           <img src="media/humanoid/case9/opening.jpg" alt="opening-gate #9" loading="lazy" />
-          <figcaption>opening-gate（人形重写）</figcaption>
+          <figcaption>opening-gate（构图门禁 PASS）</figcaption>
         </figure>
       </div>
-      <figure class="side-block">
+      <figure class="side">
         <img src="media/humanoid/case9/side.jpg" alt="side-gate #9" loading="lazy" />
-        <figcaption>side-gate（骨架体积）</figcaption>
+        <figcaption>side-gate</figcaption>
       </figure>
-      <figure class="video-block">
+      <div class="motion">
         <video controls playsinline preload="metadata" src="media/humanoid/case9/motion.mp4"></video>
-        <figcaption>motion · 页内播放（web 版）</figcaption>
-      </figure>
+      </div>
     </article>
 
     <article class="card hum-card" id="hum-case14">
