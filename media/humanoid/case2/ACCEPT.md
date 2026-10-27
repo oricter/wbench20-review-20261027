@@ -1,15 +1,17 @@
-# Case 2 acceptance — PASS
+# Case 2 acceptance
 
-- humanoid asset: humanoid.uefn-mannequin YES
-- createHumanoidWorld path: YES
-- camera follow default: YES — humanoid.third-person preset, astronaut binding, preserved opening framing.
-- locomotion default (walk/run clips): YES — SDK GASP/basic locomotion and full default action bindings retained.
-- walk pose OK: YES — W sequence frames 60 and 70 show alternating raised feet, knee flexion, and opposite leg support; the character is not rigidly sliding.
-- skinned humanoid volume: YES — side-gate.jpg shows articulated mannequin volume with bone-parented helmet and backpack.
-- no projective textures: YES — procedural/solid/vertex-color landscape and solid clothing; no photo sampling.
+- Composition gate: PASS, round 2 of 10; unmodified shared composition_gate.py.
+- Key deltas: cx 0.0086; cy 0.0069; area relative 0.0521 (5.21%); horizon 0.0278; upper_fill 0.0008.
+- Detected subject center: (0.4945, 0.4556), official (0.4859, 0.4486). Detected area: 0.0183, official 0.0193.
+- Humanoid: YES — createHumanoidWorld and humanoid.uefn-mannequin retained.
+- Camera: YES — default SDK follow, astronaut binding, preserve-opening, openingSettle enabled. Opening position [0, 1.26, 4.3], target [0, 0.916, 0], FOV 44 degrees; preset distance 4.3 m, pitch 0.08 radians.
+- Locomotion: YES — default SDK locomotion and controls; no custom controlled body or fake walk. Frames 60 and 70 show alternating foot support and bent knees. Helmet, backpack, and US flag remain attached to animated bones.
+- Walkable: OK — continuous 300 m ground collision; central rock-free corridor extends 60 m in both Z directions. W traveled 12.469 m in five seconds; S traveled 2.354 m, A and D each 7.412 m. The opening camera faces -Z, so W follows -Z toward the mountains; +Z is also clear.
+- Shadows: not required; not used as acceptance criteria.
+- No projective textures: procedural sky/ground and geometric rocks/mountains retained.
 
-Validation: compile_playable.sh successfully builds playable/compiled/entry-0.js. Both required gate and motion scripts were run with arguments `4 2`. Opening and side gates were inspected. The autodemo holds W for 150 frames and supports window.__REC_DONE.
+Validation: compile_playable.sh succeeded; capture_gates_lane.sh 4 2 succeeded; composition_gate.py returned PASS; record_motion_lane.sh 4 2 returned RECORD_OK. Motion is 562 frames at 30 fps (18.733 seconds). Position telemetry is in MOTION_CHECKS.json.
 
-Composition note: PASS under the requested humanoid/locomotion criteria. Opening is centered behind the astronaut toward the rust mountain range. Landscape is faceted/stylized, suit limbs are slimmer, and subject height is smaller than the official photograph. Default walk/run timing is retained rather than replacing it with custom low-gravity animation.
+Artifacts: opening-gate.jpg, side-gate.jpg, COMPOSITION.json, motion-30fps.mp4.
 
-Artifacts: opening-gate.jpg, side-gate.jpg, motion-30fps.mp4 (562 frames at 30 fps, approximately 18.73 seconds).
+The quantitative composition gate passes. The landscape and mannequin remain stylized, so this is not a photorealistic or pixel-exact reproduction of the reference.
