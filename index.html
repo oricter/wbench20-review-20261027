@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WBench20 验收 · Lane1 FAIL 过目</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --line: #e6e2d8;
+    --fail: #b42318;
+    --fail-bg: #fef3f2;
+    --pass: #027a48;
+    --pass-bg: #ecfdf3;
+    --skip: #6941c6;
+    --skip-bg: #f4f3ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0 0 32px;
+    max-width: 42em;
+  }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .pill {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .pill .label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .pill .value {
+    font-size: 1.15rem;
+    font-weight: 650;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+  }
+  .badge.fail { background: var(--fail-bg); color: var(--fail); }
+  .badge.pass { background: var(--pass-bg); color: var(--pass); }
+  .badge.skip { background: var(--skip-bg); color: var(--skip); }
+  .section-title {
+    font-size: 1.35rem;
+    margin: 0 0 8px;
+  }
+  .section-note {
+    color: var(--muted);
+    margin: 0 0 28px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 36px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+  .card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .card-head h2 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+  .why {
+    background: var(--fail-bg);
+    color: #7a271a;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 0 0 22px;
+    font-size: 0.98rem;
+  }
+  .why strong { color: var(--fail); }
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .pair { grid-template-columns: 1fr; }
+  }
+  figure {
+    margin: 0;
+  }
+  figure img, figure video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    background: #111;
+    border: 1px solid var(--line);
+  }
+  figcaption {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .side-block { margin-bottom: 16px; }
+  .video-block video {
+    max-height: 520px;
+    object-fit: contain;
+  }
+  .ok-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 8px;
+  }
+  .chip {
+    background: var(--pass-bg);
+    color: var(--pass);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  details.pass-fold {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-top: 12px;
+  }
+  details.pass-fold summary {
+    cursor: pointer;
+    font-weight: 650;
+    font-size: 1.05rem;
+  }
+  .pass-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .pass-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+  }
+  a.link {
+    color: #175cd3;
+    text-decoration: none;
+  }
+  a.link:hover { text-decoration: underline; }
+  footer {
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>WBench20 验收页</h1>
+    <p class="lede">结论先行。下面四题是 Lane1 构图硬门禁 FAIL——图片并排、视频可直接播，不用下载。其他 Lane 已 PASS，叠在底部。</p>
+
+    <div class="summary">
+      <div class="pill">
+        <div class="label">Lane2</div>
+        <div class="value"><span class="badge pass">PASS</span> · 5 题</div>
+      </div>
+      <div class="pill">
+        <div class="label">Lane3</div>
+        <div class="value"><span class="badge pass">PASS</span> · 5 题</div>
+      </div>
+      <div class="pill">
+        <div class="label">Lane4</div>
+        <div class="value"><span class="badge pass">PASS</span> · 5 题</div>
+      </div>
+      <div class="pill">
+        <div class="label">Lane1</div>
+        <div class="value"><span class="badge fail">4 FAIL</span> · #4 金样跳过</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">需要过目 · Lane1 构图 FAIL</h2>
+    <p class="section-note">材料 / norectex / WASD 都过了；卡在官方首帧构图锁。</p>
+
+    <!-- CASE 136 -->
+    <article class="card" id="case136">
+      <div class="card-head">
+        <h2>#136</h2>
+        <span class="badge fail">FAIL · 构图</span>
+        <div class="ok-list">
+          <span class="chip">norectex</span>
+          <span class="chip">WASD</span>
+          <span class="chip">motion</span>
+        </div>
+      </div>
+      <p class="why"><strong>为什么 FAIL：</strong>主体外轮廓接近（IoU≈0.96），但开场完整构图与内部形状未达精确匹配——显示器角、键盘透视、鼠标轮廓、瓶盖与窗帘范围仍明显不同。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/lane1/case136/official.jpg" alt="官方首帧 #136" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/lane1/case136/opening.jpg" alt="opening-gate #136" loading="lazy" />
+          <figcaption>opening-gate（我们的）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/lane1/case136/side.jpg" alt="side-gate #136" loading="lazy" />
+        <figcaption>side-gate（侧移后，确认实体几何、无贴图拉伸）</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/lane1/case136/motion.mp4"></video>
+        <figcaption>motion · 30fps（页内播放）</figcaption>
+      </figure>
+    </article>
+
+    <!-- CASE 33 -->
+    <article class="card" id="case33">
+      <div class="card-head">
+        <h2>#33</h2>
+        <span class="badge fail">FAIL · 构图</span>
+        <div class="ok-list">
+          <span class="chip">材料</span>
+          <span class="chip">WASD</span>
+          <span class="chip">motion</span>
+        </div>
+      </div>
+      <p class="why"><strong>为什么 FAIL：</strong>中殿、走道、成对长椅、高窗与祭坛都有，但建筑雕刻、会众、窗格划分、前景轮廓与拱顶比例仍简化，未锁死官方首帧。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/lane1/case33/official.jpg" alt="官方首帧 #33" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/lane1/case33/opening.jpg" alt="opening-gate #33" loading="lazy" />
+          <figcaption>opening-gate（我们的）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/lane1/case33/side.jpg" alt="side-gate #33" loading="lazy" />
+        <figcaption>side-gate</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/lane1/case33/motion.mp4"></video>
+        <figcaption>motion · 30fps（页内播放）</figcaption>
+      </figure>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="card" id="case3">
+      <div class="card-head">
+        <h2>#3</h2>
+        <span class="badge fail">FAIL · 构图</span>
+        <div class="ok-list">
+          <span class="chip">norectex</span>
+          <span class="chip">WASD</span>
+          <span class="chip">motion</span>
+        </div>
+      </div>
+      <p class="why"><strong>为什么 FAIL：</strong>运动员落点、记分牌、看台层与栏架大致按像素坐标放了，但屋顶构造、座位透视、解剖细节与部分道具轮廓仍明显近似，不能当精确匹配。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/lane1/case3/official.jpg" alt="官方首帧 #3" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/lane1/case3/opening.jpg" alt="opening-gate #3" loading="lazy" />
+          <figcaption>opening-gate（我们的）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/lane1/case3/side.jpg" alt="side-gate #3" loading="lazy" />
+        <figcaption>side-gate</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/lane1/case3/motion.mp4"></video>
+        <figcaption>motion · 30fps（页内播放）</figcaption>
+      </figure>
+    </article>
+
+    <!-- CASE 16 -->
+    <article class="card" id="case16">
+      <div class="card-head">
+        <h2>#16</h2>
+        <span class="badge fail">FAIL · 构图 / 剪影</span>
+        <div class="ok-list">
+          <span class="chip">norectex</span>
+          <span class="chip">WASD</span>
+          <span class="chip">motion</span>
+        </div>
+      </div>
+      <p class="why"><strong>为什么 FAIL：</strong>主体大致位置、山峰与湖面地平线有量测，但身体轮廓、雪斑、林缘、岸线与岩石分布仍可见偏差，未达精确剪影锁。</p>
+      <div class="pair">
+        <figure>
+          <img src="media/lane1/case16/official.jpg" alt="官方首帧 #16" loading="lazy" />
+          <figcaption>官方首帧</figcaption>
+        </figure>
+        <figure>
+          <img src="media/lane1/case16/opening.jpg" alt="opening-gate #16" loading="lazy" />
+          <figcaption>opening-gate（我们的）</figcaption>
+        </figure>
+      </div>
+      <figure class="side-block">
+        <img src="media/lane1/case16/side.jpg" alt="side-gate #16" loading="lazy" />
+        <figcaption>side-gate</figcaption>
+      </figure>
+      <figure class="video-block">
+        <video controls playsinline preload="metadata" src="media/lane1/case16/motion.mp4"></video>
+        <figcaption>motion · 30fps（页内播放）</figcaption>
+      </figure>
+    </article>
+
+    <h2 class="section-title">其余已 PASS（可折叠）</h2>
+    <p class="section-note">原片仍在各自 private release；此处只列题号与链接，避免把 PASS 大视频再塞进页面。</p>
+
+    <details class="pass-fold" open>
+      <summary>Lane1 · #4 金样跳过</summary>
+      <div class="pass-row">
+        <span class="badge skip">SKIP · gold</span>
+        <span>#4 用既有金样，本轮未重做</span>
+        <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench4-motion-norectex-20261027" target="_blank" rel="noopener">金样 release</a>
+      </div>
+    </details>
+
+    <details class="pass-fold">
+      <summary>Lane2 · PASS · #13 / #155 / #63 / #6 / #20</summary>
+      <div class="pass-grid">
+        <div class="pass-row"><span class="badge pass">PASS</span> #13 <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane2-case13-20261027" target="_blank" rel="noopener">release</a></div>
+        <div class="pass-row"><span class="badge pass">PASS</span> #155 <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane2-case155-20261027" target="_blank" rel="noopener">release</a></div>
+        <div class="pass-row"><span class="badge pass">PASS</span> #63 <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane2-case63-20261027" target="_blank" rel="noopener">release</a></div>
+        <div class="pass-row"><span class="badge pass">PASS</span> #6 <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane2-case6-20261027" target="_blank" rel="noopener">release</a></div>
+        <div class="pass-row"><span class="badge pass">PASS</span> #20 <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane2-case20-20261027" target="_blank" rel="noopener">release</a></div>
+      </div>
+    </details>
+
+    <details class="pass-fold">
+      <summary>Lane3 · PASS · #45 / #157 / #167 / #9 / #21</summary>
+      <div class="pass-grid">
+        <div class="pass-row"><span class="badge pass">PASS</span> 五题齐全 · <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane3-20261027" target="_blank" rel="noopener">wbench20-lane3-20261027</a></div>
+      </div>
+    </details>
+
+    <details class="pass-fold">
+      <summary>Lane4 · PASS · #58 / #159 / #2 / #14 / #22</summary>
+      <div class="pass-grid">
+        <div class="pass-row"><span class="badge pass">PASS</span> 五题齐全 · <a class="link" href="https://github.com/oricter/world500-xuxiake-artifacts/releases/tag/wbench20-lane4-partial-20261027" target="_blank" rel="noopener">wbench20-lane4-partial-20261027</a></div>
+      </div>
+    </details>
+
+    <footer>
+      素材来自 <code>oricter/world500-xuxiake-artifacts</code> · tag <code>wbench20-lane1-20261027</code>（FAIL 四题）。运动片为 720p web 版，原片仍在 release。未碰鲁班 pod，未拷 Mac。
+    </footer>
+  </div>
+</body>
+</html>
