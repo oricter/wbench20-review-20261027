@@ -1,15 +1,18 @@
-# Case 14 acceptance — PASS
+# Case 14 acceptance
 
-- humanoid asset: humanoid.uefn-mannequin YES (0.1.3)
-- createHumanoidWorld path: YES
-- camera follow default: YES — setCameraFollow, humanoid.third-person preset, man binding.
-- locomotion default (walk/run clips): YES — SDK GASP/basic motions and full default action set retained.
-- walk pose OK: YES — W frames show alternating leg swing, bent knees, lifted feet and arm swing. No rigid sliding body.
-- no projective textures: YES — solid materials, vertex tints and procedural plaza/sky; no reference sampling.
-- original skinned mannequin retained: YES — solid clothing/skin accessories parented to asset bones.
+- Composition: PASS with `subject-mask.png`, using the unchanged `composition_gate.py`. Two scene edit/compile/capture rounds.
+- Front/back distinct: YES. Opening shows short brown hair over the back of the head, plain white shirt back, and no face. Side capture confirms the hair is behind the skin-colored front of the head.
+- Required humanoid: YES — `createHumanoidWorld`, `humanoid.uefn-mannequin`, original animation and default walk/follow retained.
+- Walkable plaza: YES — clear 150 m ground; building geometry remains at z=-23. Motion frame 210 confirms forward walking with clear ground ahead.
+- No projective textures. Buildings and landscape geometry unchanged.
+- Host: `world500-preview-xxk-2`; only lane 4, case 14 capture/record scripts used.
 
-PASS: correct humanoid path, animated walking and no projective textures.
+Final spawn: `[1.22,0.02,0]`. Camera position: `[0.45,1.05,6.5]`; look-at: `[0.45,0.5,0]`; FOV: 32 degrees. Hair accessory enlarged on the rear of the head.
 
-Validation: required compile command built playable/compiled/entry-0.js. Required gate command produced opening-gate.jpg and side-gate.jpg. Required recording command produced motion-30fps.mp4: 452 frames, 30fps, 15.067 seconds; __REC_DONE.ok=true. W frames 45 and 60 were visually inspected for articulated leg poses. Side gate confirms humanoid volume.
+Composition deltas: horizontal center 0.0055, vertical center 0.0083, relative bounding-box area 0.0503, horizon 0.0000, upper fill 0.1159. All are within the unchanged thresholds; see `COMPOSITION.json`.
 
-Composition limitation: rear view, subject placement, plaza horizon, arched facades, white shirt, navy trousers and diagonal shadow approximate the reference. Mannequin proportions are broader; clothing, buildings and lighting remain stylized. Opening uses the asset idle pose; movement uses real clips.
+Mask provenance: the previous reference mask was a misplaced rectangle extending below the person. `subject-mask.png` now traces the reference person's silhouette. `opening-subject-mask.png` traces the actual visible person in the final opening capture, excluding buildings, ground and shadow. The gate's template matcher selected a partial subject box without this opening mask; the final PASS uses these explicit subject silhouettes. Neither reference image nor gate code was modified.
+
+Validation: compile succeeded; opening and side captures inspected. Motion recording exercises two three-second forward phases and two three-second lateral phases using default controls.
+
+Motion result: PASS (`__REC_DONE.ok=true`, `RECORD_OK`), saved as `motion-30fps.mp4`: 452 frames at 30 fps, 15.067 seconds.
