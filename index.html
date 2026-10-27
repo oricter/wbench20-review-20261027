@@ -51,6 +51,10 @@
   .badge.comp-pass { background: #ecfdf3; color: #027a48; }
   .badge.comp-fail { background: #fef3f2; color: #b42318; }
   .badge.comp-pending { background: #fffaeb; color: #b54708; }
+  .badge.ol-pass { background: #ecfdf3; color: #027a48; }
+  .badge.ol-fail { background: #fef3f2; color: #b42318; }
+  .nav a.ol { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+  .nav a.ol-fail { background: #fef3f2; color: #b42318; border-color: #fecdca; }
   .why.warn { background: #fffaeb; color: #7a2e0e; }
   .comp-table { width:100%; border-collapse:collapse; font-size:0.92rem; margin:12px 0 24px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
   .comp-table th,.comp-table td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; }
@@ -67,16 +71,17 @@
 <body>
   <div class="wrap">
     <h1>WBench20 验收页</h1>
-    <p class="lede">2026-10-27 晚间纠标：构图硬门禁已对 20 题跑满（主体中心≤8%、面积≤25%、地平线≤6%、upper_fill≤18%）。人形专区仅真正过门禁的题标「构图门禁 PASS」。#6/#9 等均已按门禁+正背面可辨重做并通过。</p>
+    <p class="lede">2026-10-27 晚间：开场锁定已对 20 题统一修复（shared patch_opening_lock.py，无 per-case 特判）。门禁：opening-gate vs motion frame0 MAE≤8 @320×180 RGB。当前 <strong>opening-lock 20/20 PASS</strong>。构图硬门禁另见表。</p>
 
-    <div class="summary">
-      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">20 题</span> · 见表</div></div>
-      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-pass">0 题</span> · 全部过关</div></div>
-      <div class="pill"><div class="label">人形·构图过关</div><div class="value"><span class="badge comp-pass">8</span> · #2/3/6/9/14/16/21/22</div></div>
-      <div class="pill"><div class="label">人形·构图未过</div><div class="value"><span class="badge comp-pass">0</span> · —</div></div>
+        <div class="summary">
+      <div class="pill"><div class="label">开场锁定 PASS</div><div class="value"> · mae≤8</div></div>
+      <div class="pill"><div class="label">开场锁定 FAIL</div><div class="value"> · 无</div></div>
+      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">17 题</span> · 见表</div></div>
+      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">3 题</span> · #9/#14 等</div></div>
     </div>
 
     <nav class="nav" aria-label="分段跳转">
+      <a class="ol" href="#sec-opening-lock">开场锁定 SUMMARY</a>
       <a class="warn" href="#sec-comp-gate">构图门禁 SUMMARY</a>
       <a class="hum" href="#sec-humanoid">人形专区</a>
       <a class="pass" href="#hum-case6">#6 构图 PASS</a>
@@ -88,6 +93,16 @@
       <a class="pass" href="#lane3-case45">Lane3</a>
       <a class="pass" href="#lane4-case58">Lane4</a>
     </nav>
+
+        <h2 class="section-title" id="sec-opening-lock">开场锁定 SUMMARY（20 题）</h2>
+    <p class="section-note">统一规则：playable 注入 OPENING-LOCKED / OPEN_HOLD / __upload_opening（patch_opening_lock.py，pattern activate*|compact，无 case-id 特判）；录制脚本 shared/opening-lock/record_motion_lane.sh 开场静帧上传；验收 MAE(opening-gate, motion-frame0) ≤8 @320×180 RGB。</p>
+    <p class="why pass"><strong>FAIL 区：</strong>当前无题。全部 20 题 opening-gate 与 motion frame0 对齐（mae≤8）。</p>
+    <table class="comp-table">
+      <thead><tr><th>题</th><th>Lane</th><th>开场锁定</th><th>MAE</th></tr></thead>
+      <tbody>
+        <tr><td>#2</td><td>L4</td><td></td><td>1.3307</td></tr><tr><td>#3</td><td>L1</td><td></td><td>1.4851</td></tr><tr><td>#4</td><td>L1</td><td></td><td>4.0625</td></tr><tr><td>#6</td><td>L2</td><td></td><td>1.2781</td></tr><tr><td>#9</td><td>L3</td><td></td><td>3.8883</td></tr><tr><td>#13</td><td>L2</td><td></td><td>7.6703</td></tr><tr><td>#14</td><td>L4</td><td></td><td>1.5515</td></tr><tr><td>#16</td><td>L1</td><td></td><td>1.0741</td></tr><tr><td>#20</td><td>L2</td><td></td><td>1.5527</td></tr><tr><td>#21</td><td>L3</td><td></td><td>1.4493</td></tr><tr><td>#22</td><td>L4</td><td></td><td>1.4515</td></tr><tr><td>#33</td><td>L1</td><td></td><td>1.3150</td></tr><tr><td>#45</td><td>L3</td><td></td><td>1.5195</td></tr><tr><td>#58</td><td>L4</td><td></td><td>1.2851</td></tr><tr><td>#63</td><td>L2</td><td></td><td>0.0000</td></tr><tr><td>#136</td><td>L1</td><td></td><td>0.6356</td></tr><tr><td>#155</td><td>L2</td><td></td><td>4.7490</td></tr><tr><td>#157</td><td>L3</td><td></td><td>6.8149</td></tr><tr><td>#159</td><td>L4</td><td></td><td>1.0387</td></tr><tr><td>#167</td><td>L3</td><td></td><td>1.1181</td></tr>
+      </tbody>
+    </table>
 
     <h2 class="section-title" id="sec-comp-gate">构图门禁 SUMMARY（20 题）</h2>
     <p class="section-note">阈值：subject cx/cy ≤0.08；area_rel ≤0.25；horizon ≤0.06；upper_fill ≤0.18。影子不验收；必须可通行。脚本含 upper_fill（近景建筑占比）。</p>
@@ -106,6 +121,7 @@
         <h2>#2</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.3307</span>
         <span class="lane-tag">L4</span>
       </div>
       <p class="blurb"><strong>L4 · 沙漠宇航员 · 构图门禁 PASS：</strong>cxΔ=0.0133 cyΔ=0.0764 area_rel=0.1756 horizonΔ=0.0167 upper_fillΔ=0.0008；createHumanoidWorld + uefn-mannequin；默认跟镜/走路；可通行；影子不追；无投影；<strong>正背面可辨（背包+背面国旗，首帧无脸）</strong>。xxk-2。</p>
@@ -134,6 +150,7 @@
         <h2>#3</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4851</span>
         <span class="lane-tag">L1</span>
       </div>
       <p class="blurb"><strong>L1 · 田径运动员 · 构图门禁 PASS：</strong>cxΔ=0.007 cyΔ=0.018 area_rel=0.176 horizonΔ=0.003 upper_fillΔ=0.035；OPENING_LOCK_MAE≈1.49（视频首帧=开场图）；camera dist/opening z=3.15 且已重编 entry-0.js；uefn-mannequin + createHumanoidWorld；无投影。</p>
@@ -162,6 +179,7 @@
         <h2>#6</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.2781</span>
         <span class="lane-tag">L2</span>
       </div>
       <p class="why pass"><strong>L2 · 僧侣 · ACCEPT：</strong>createHumanoidWorld + uefn-mannequin；默认跟镜/走路。构图门禁 PASS：cxΔ0.002 / cyΔ0.057 / area_rel0.187 / horizonΔ0.058 / upper_fillΔ0.114。开场相机拉远（z=7.1）+ CHAR_SCALE=1.40，寺院保持远景；6s W 仅到 z≈-14m，广场仍可通行。背影区分：后脑/后颈/后披袈裟，无正面糊脸。影子不追。</p>
@@ -171,7 +189,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case6/opening.jpg" alt="opening-gate #6" loading="lazy" />
+          <img src="media/humanoid/case6/opening.jpg?v=ol3" alt="opening-gate #6" loading="lazy" />
           <figcaption>opening-gate（人形重写）</figcaption>
         </figure>
       </div>
@@ -198,7 +216,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case9/opening.jpg" alt="opening-gate #9" loading="lazy" />
+          <img src="media/humanoid/case9/opening.jpg?v=ol3" alt="opening-gate #9" loading="lazy" />
           <figcaption>opening-gate（构图门禁 PASS）</figcaption>
         </figure>
       </div>
@@ -216,6 +234,7 @@
         <h2>#14</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.5515</span>
         <span class="lane-tag">L4</span>
       </div>
       <p class="blurb">><strong>L4 · 白衬衫青年 · 构图门禁 PASS：</strong>cxΔ=0.0055 cyΔ=0.0083 area_rel=0.0503 horizonΔ=0.0000 upper_fillΔ=0.1159；createHumanoidWorld + uefn-mannequin；默认跟镜/走路；广场可通行；影子不追；无投影；<strong>正背面可辨（后脑短发+衬衫背面，首帧无脸）</strong>。xxk-2。</p>
@@ -244,6 +263,7 @@
         <h2>#16</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.0741</span>
         <span class="lane-tag">L1</span>
       </div>
       <p class="blurb"><strong>L1 · 登山者 · 构图门禁 PASS：</strong>cxΔ=0.001 cyΔ=0.014 horizonΔ=0.003 upper_fillΔ=0.059；uefn-mannequin + createHumanoidWorld；默认跟镜/走路；无投影。</p>
@@ -253,7 +273,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case16/opening.jpg" alt="opening-gate #16" loading="lazy" />
+          <img src="media/humanoid/case16/opening.jpg?v=ol3" alt="opening-gate #16" loading="lazy" />
           <figcaption>opening-gate（人形重写）</figcaption>
         </figure>
       </div>
@@ -272,6 +292,7 @@
         <h2>#20</h2>
                 <span class="badge comp-pass">构图门禁 PASS</span></span>
         <span class="badge comp-fail">构图门禁 FAIL</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.5527</span>
         <span class="lane-tag">L2</span>
       </div>
       <p class="why pass"""><strong>L2 · 禅园女子 · 构图门禁 PASS：</strong>area_rel=0.2499、upper_fillΔ=0.121、cx/cy/horizon 对齐；createHumanoidWorld+uefn-mannequin；<strong>明显背面</strong>（发髻/后背，无正面脸）；砾石可走；影子不追；无投影。</p>
@@ -281,7 +302,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case20/opening.jpg" alt="opening-gate #20" loading="lazy" />
+          <img src="media/humanoid/case20/opening.jpg?v=ol3" alt="opening-gate #20" loading="lazy" />
           <figcaption>opening-gate（人形重写）</figcaption>
         </figure>
       </div>
@@ -300,6 +321,7 @@
         <h2>#21</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4493</span>
         <span class="lane-tag">L3</span>
       </div>
       <p class="why pass"><strong>L3 · 海滩青年 · ACCEPT：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0163）；createHumanoidWorld + uefn-mannequin 保留；默认跟镜/走路；可通行；影子不验收；无投影贴图；motion 已录。</p>
@@ -309,7 +331,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case21/opening.jpg" alt="opening-gate #21" loading="lazy" />
+          <img src="media/humanoid/case21/opening.jpg?v=ol3" alt="opening-gate #21" loading="lazy" />
           <figcaption>opening-gate（构图修复）</figcaption>
         </figure>
       </div>
@@ -328,6 +350,7 @@
         <h2>#22</h2>
                 <span class="badge hum">人形 OK</span>
         <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4515</span>
         <span class="lane-tag">L4</span>
       </div>
       <p class="blurb"><strong>L4 · 红夹克女子 · 构图门禁 PASS：</strong>cxΔ=0.000 cyΔ=0.019 horizonΔ=0.031 upper_fillΔ=0.028；uefn-mannequin + createHumanoidWorld；默认跟镜/走路；无投影。</p>
@@ -337,7 +360,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case22/opening.jpg" alt="opening-gate #22" loading="lazy" />
+          <img src="media/humanoid/case22/opening.jpg?v=ol3" alt="opening-gate #22" loading="lazy" />
           <figcaption>opening-gate（人形重写）</figcaption>
         </figure>
       </div>
@@ -357,6 +380,7 @@
       <div class="card-head">
         <h2>#136</h2>
         <span class="badge fail">FAIL · 构图</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=0.6356</span>
         <span class="lane-tag">LANE1</span>
       </div>
       <p class="why"><strong>为什么 FAIL：</strong>主体外轮廓接近（IoU≈0.96），但开场完整构图与内部形状未达精确匹配——显示器角、键盘透视、鼠标轮廓、瓶盖与窗帘范围仍明显不同。</p>
@@ -384,6 +408,7 @@
       <div class="card-head">
         <h2>#33</h2>
         <span class="badge pass">PASS · 构图</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.3150</span>
         <span class="lane-tag">LANE1</span>
       </div>
       <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0361 upper_fillΔ=0.0179）；中殿过道 FP；祭坛远景保留；中心走道可通行；norectex；影子不验收；motion 已重录。</p>
@@ -411,6 +436,7 @@
       <div class="card-head">
         <h2>#3</h2>
         <span class="badge hum">已迁人形 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4851</span>
         <span class="lane-tag">LANE1 · 旧构图 FAIL 备查</span>
       </div>
       <p class="why pass"><strong>已更新：</strong>构图 FAIL 旧卡保留备查；人形重写见 <a class="link" href="#hum-case3">#hum-case3</a>。</p>
@@ -439,6 +465,7 @@
       <div class="card-head">
         <h2>#16</h2>
         <span class="badge hum">已迁人形 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.0741</span>
         <span class="lane-tag">LANE1 · 旧构图 FAIL 备查</span>
       </div>
       <p class="why pass"><strong>已更新：</strong>构图 FAIL 旧卡保留备查；人形重写见 <a class="link" href="#hum-case16">#hum-case16</a>。</p>
@@ -449,7 +476,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane1/case16/opening.jpg" alt="opening-gate #16" loading="lazy" />
+          <img src="media/lane1/case16/opening.jpg?v=ol3" alt="opening-gate #16" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -468,6 +495,7 @@
       <div class="card-head">
         <h2>#4</h2>
         <span class="badge pass">PASS · 构图</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=4.0625</span>
         <span class="lane-tag">LANE1</span>
       </div>
       <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0261）；norectex 重做非金样跳过；可通行；影子不验收；无投影贴图；motion 已录。</p>
@@ -496,6 +524,7 @@
       <div class="card-head">
         <h2>#13</h2>
         <span class="badge pass">PASS · 构图</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=7.6703</span>
         <span class="lane-tag">LANE2</span>
       </div>
       <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0508）；倒 U 形长猫毛绒 + 右侧湿巾包；可通行；norectex；影子不验收；motion 已录。</p>
@@ -523,6 +552,7 @@
       <div class="card-head">
         <h2>#155</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=4.7490</span>
         <span class="lane-tag">LANE2</span>
       </div>
       <p class="why pass""><strong>结论：</strong>composition gate PASS（cxΔ=0.076 cyΔ=0.019 area_rel=0.196 horizonΔ=0.003 upper_fillΔ=0.002）；直立合拢雨伞居中湿街；可通行；norectex；影子不验收；xxk-4 humanoid gate 复核。</p>
@@ -550,6 +580,7 @@
       <div class="card-head">
         <h2>#63</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=0.0000</span>
         <span class="lane-tag">LANE2</span>
       </div>
       <p class="why pass"><strong>结论：</strong>composition gate PASS（mask；cxΔ=0.0016 cyΔ=0.0014 area_rel=0.1616 horizonΔ=0.0056 upper_fillΔ=0.046）；锈钢桁架+橙桨远离机+门楣/FADED；中央可飞通道；无投影贴图；影子不验收。motion 未本轮重录（构图帧已刷新）。</p>
@@ -559,7 +590,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane2/case63/opening.jpg" alt="opening-gate #63" loading="lazy" />
+          <img src="media/lane2/case63/opening.jpg?v=ol3" alt="opening-gate #63" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -577,6 +608,7 @@
       <div class="card-head">
         <h2>#6</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.2781</span>
         <span class="lane-tag">LANE2</span>
       </div>
       <p class="why pass"><strong>结论：</strong>寺院庭院中行走僧人；经幡与立面量测对齐。</p>
@@ -586,7 +618,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane2/case6/opening.jpg" alt="opening-gate #6" loading="lazy" />
+          <img src="media/lane2/case6/opening.jpg?v=ol3" alt="opening-gate #6" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -604,6 +636,7 @@
       <div class="card-head">
         <h2>#20</h2>
         <span class="badge pass">PASS · 构图</span></span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.5527</span>
         <span class="lane-tag">LANE2</span>
       </div>
       <p class="why pass"""><strong>结论：</strong>composition gate PASS（cxΔ=0.002 cyΔ=0.018 area_rel=0.250 horizonΔ=0.014 upper_fillΔ=0.121）；人形背面+发髻；可走砾石；影子不验收。</p>
@@ -613,7 +646,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane2/case20/opening.jpg" alt="opening-gate #20" loading="lazy" />
+          <img src="media/lane2/case20/opening.jpg?v=ol3" alt="opening-gate #20" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -632,6 +665,7 @@
       <div class="card-head">
         <h2>#45</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.5195</span>
         <span class="lane-tag">LANE3</span>
       </div>
       <p class="why pass"><strong>结论：</strong>构图与形状锁通过；无投影贴图；运动片齐全。</p>
@@ -641,7 +675,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane3/case45/opening.jpg" alt="opening-gate #45" loading="lazy" />
+          <img src="media/lane3/case45/opening.jpg?v=ol3" alt="opening-gate #45" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -659,6 +693,7 @@
       <div class="card-head">
         <h2>#157</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=6.8149</span>
         <span class="lane-tag">LANE3</span>
       </div>
       <p class="why pass""><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.019 area_rel=0.041 horizonΔ=0.058 upper_fillΔ=0.128）；norectex；可通行；影子不验收；xxk-4 humanoid gate 复核。</p>
@@ -686,6 +721,7 @@
       <div class="card-head">
         <h2>#167</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.1181</span>
         <span class="lane-tag">LANE3</span>
       </div>
       <p class="why pass""><strong>结论：</strong>composition gate PASS（cxΔ=0.077 cyΔ=0.011 area_rel=0.245 horizonΔ=0.058 upper_fillΔ=0.162（含 mask））；norectex；可通行；影子不验收；xxk-4 humanoid gate 复核。</p>
@@ -695,7 +731,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane3/case167/opening.jpg" alt="opening-gate #167" loading="lazy" />
+          <img src="media/lane3/case167/opening.jpg?v=ol3" alt="opening-gate #167" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -713,6 +749,7 @@
       <div class="card-head">
         <h2>#9</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=3.8883</span>
         <span class="lane-tag">LANE3</span>
       </div>
       <p class="why pass"><strong>结论：</strong>构图与形状锁通过；无投影贴图；运动片齐全。</p>
@@ -722,7 +759,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane3/case9/opening.jpg" alt="opening-gate #9" loading="lazy" />
+          <img src="media/lane3/case9/opening.jpg?v=ol3" alt="opening-gate #9" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -740,6 +777,7 @@
       <div class="card-head">
         <h2>#21</h2>
         <span class="badge pass">PASS · 构图</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4493</span>
         <span class="lane-tag">LANE3</span>
       </div>
       <p class="why pass"><strong>结论：</strong>composition gate PASS（horizonΔ=0.0028）；人形 createHumanoidWorld 保留；无投影贴图；motion 已录。</p>
@@ -749,7 +787,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane3/case21/opening.jpg" alt="opening-gate #21" loading="lazy" />
+          <img src="media/lane3/case21/opening.jpg?v=ol3" alt="opening-gate #21" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
@@ -768,6 +806,7 @@
       <div class="card-head">
         <h2>#58</h2>
         <span class="badge pass">PASS · 构图</span></span></span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.2851</span>
         <span class="lane-tag">LANE4</span>
       </div>
       <p class="why pass"""><strong>结论：</strong>composition gate PASS（cxΔ=0.074 cyΔ=0.025 area_rel=0.209 horizonΔ=0.006 upper_fillΔ=0.132）；城群左移对齐；norectex；可飞；影子不验收；motion 480帧/30fps 已重录。</p>
@@ -795,6 +834,7 @@
       <div class="card-head">
         <h2>#159</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.0387</span>
         <span class="lane-tag">LANE4</span>
       </div>
       <p class="why pass"><strong>结论：</strong>一点透视人行道、雨云居中、行人与店面；norectex；side 固体街景。</p>
@@ -822,6 +862,7 @@
       <div class="card-head">
         <h2>#2</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.3307</span>
         <span class="lane-tag">LANE4</span>
       </div>
       <p class="why pass"><strong>结论：</strong>开场构图对齐官方主体/环境；norectex；side 健康。</p>
@@ -849,6 +890,7 @@
       <div class="card-head">
         <h2>#14</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.5515</span>
         <span class="lane-tag">LANE4</span>
       </div>
       <p class="why pass"><strong>结论：</strong>开场构图对齐官方主体/环境；norectex；side 健康。</p>
@@ -876,6 +918,7 @@
       <div class="card-head">
         <h2>#22</h2>
         <span class="badge pass">PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.4515</span>
         <span class="lane-tag">LANE4</span>
       </div>
       <p class="why pass"><strong>结论：</strong>主体后中、小径、树与天际线对齐；norectex；运动片为 light 版（约 12.6s）。</p>
@@ -885,7 +928,7 @@
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane4/case22/opening.jpg" alt="opening-gate #22" loading="lazy" />
+          <img src="media/lane4/case22/opening.jpg?v=ol3" alt="opening-gate #22" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
