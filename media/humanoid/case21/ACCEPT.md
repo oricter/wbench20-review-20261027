@@ -1,15 +1,17 @@
-# WBench case 21 — PASS
+# WBench case 21 — composition PASS
 
-- humanoid asset: humanoid.uefn-mannequin YES
-- camera follow default: YES — SDK setCameraFollow, humanoid.third-person preset, beach_man binding.
-- locomotion default (walk/run clips): YES — createHumanoidWorld retains the installed GASP/basic motion set and default controls/action set.
-- walk pose OK: YES — sampled W-phase recording frames 40 and 50 show alternating leg swing, knee bending and lifted feet, with corresponding arm motion; the body is not rigidly sliding.
-- createHumanoidWorld path: YES. Original skinned mannequin remains the controlled body.
-- no projective textures: YES. Landscape uses procedural/solid/vertex-color materials; character textures are disabled.
-- clothing follows skeleton: YES — shirt, sleeves, shorts, hair and backpack are bone-parented; original skinned surfaces have joint-region colors.
+- composition gate: PASS, round 1, using the supplied unmodified composition_gate.py.
+- Horizon: official 0.3222; opening 0.3194; delta 0.0028 (limit 0.06).
+- Subject center deltas: x 0.0000, y 0.0194; relative area delta 0.0406; upper-fill delta 0.0163. All within gate thresholds.
+- Detector limitation: subject bounding boxes cover nearly the full frame. This gate result verifies the requested measured horizon correction, but does not establish an exact subject silhouette or photographic match.
+- Camera: initialPitchRadians 0.145; opening height 1.6 m; opening distance 3.0 m; look-at height 1.161926 m. preserve-opening, openingSettle and beach_man binding retained.
+- humanoid: YES — createHumanoidWorld + humanoid.uefn-mannequin. Original skinned mannequin remains the controlled body; no hand-built controlled body introduced.
+- camera default follow: YES — SDK setCameraFollow with humanoid.third-person preset.
+- locomotion default: YES — existing SDK walking controls and animation retained.
+- walkable boardwalk: OK — clear 2.34 m-wide deck extends ahead to the landing and sand; grass and railings remain beside the path. No blocking props added.
+- shadows not required. No lighting or shadow tuning performed.
+- no projective textures: YES — existing procedural/solid/vertex-color materials retained.
 
-Validation: compiled/entry-0.js builds; exact capture_gates_lane.sh 3 21 and record_motion_lane.sh 3 21 commands run. Opening and side gates show three-dimensional skinned volume. Recording holds W for 150 frames, with subsequent turning and forward movement. index.html preserves ?rec=1 upload/finalization and window.__REC_DONE hooks.
+Validation: compile_playable.sh succeeded; capture_gates_xxk3.sh 3 21 produced opening-gate.jpg and side-gate.jpg; composition_gate.py returned exit 0. Changes are confined to case 21.
 
-Composition note: rear camera, timber boardwalk, dune grass, ocean and sunset approximate the reference. Mannequin anatomy, rectangular backpack, vegetation and lighting are stylized; the opening is not a photographic match. This does not affect the verified humanoid locomotion path.
-
-Recording result: RECORD_OK; window.__REC_DONE.ok=true; 341 frames, 30 fps, 11.367 seconds, motion-30fps.mp4 (12,247,845 bytes).
+Motion recording: RECORD_OK; record_motion_lane.sh 3 21 completed with window.__REC_DONE.ok=true. motion-30fps.mp4 contains 341 frames at 30 fps (11.367 seconds), 11,690,427 bytes. Inspected frames 90 and 165 show animated walking along the deck and onward onto clear sand toward the ocean, confirming forward traversal.

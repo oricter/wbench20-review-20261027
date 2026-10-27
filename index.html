@@ -81,8 +81,9 @@
       <a class="hum" href="#sec-humanoid">人形专区</a>
       <a class="fail" href="#hum-case6">#6 构图 FAIL</a>
       <a class="fail" href="#lane1-case136">FAIL #136</a>
-      <a class="fail" href="#lane1-case33">FAIL #33</a>
-      <a href="#lane1-case4">#4 金样</a>
+      <a class="pass" href="#lane1-case33">PASS #33</a>
+      <a class="pass" href="#lane1-case4">PASS #4</a>
+      <a class="pass" href="#hum-case21">PASS #21</a>
       <a class="pass" href="#lane2-case13">Lane2</a>
       <a class="pass" href="#lane3-case45">Lane3</a>
       <a class="pass" href="#lane4-case58">Lane4</a>
@@ -90,11 +91,11 @@
 
     <h2 class="section-title" id="sec-comp-gate">构图门禁 SUMMARY（20 题）</h2>
     <p class="section-note">阈值：subject cx/cy ≤0.08；area_rel ≤0.25；horizon ≤0.06；upper_fill ≤0.18。影子不验收；必须可通行。脚本含 upper_fill（近景建筑占比）。</p>
-    <p class="why warn"><strong>纠标说明：</strong>此前人形专区笼统写 PASS 只代表人形+走路，<strong>不等于构图过关</strong>。构图硬门禁此前只正式跑过 #20；#6 本地补跑 FAIL（cxΔ0.108 / horizonΔ0.111 / upper_fillΔ0.19），远景寺院被做成近景。下表为全量结果；#6 正在 xxk-1 按远景深度重做。</p>
+    <p class="why warn"><strong>纠标说明：</strong>此前人形专区笼统写 PASS 只代表人形+走路，<strong>不等于构图过关</strong>。构图硬门禁此前只正式跑过 #20；#6 本地补跑 FAIL（cxΔ0.108 / horizonΔ0.111 / upper_fillΔ0.19），远景寺院被做成近景。下表为全量结果；xxk-3 已修复 #4/#13/#21/#33 为 PASS；其余 FAIL 由其他 xxk 并行改。</p>
     <table class="comp-table">
       <thead><tr><th>题</th><th>门禁</th><th>cxΔ</th><th>cyΔ</th><th>horizonΔ</th><th>upper_fillΔ</th><th>原因</th><th>来源</th></tr></thead>
       <tbody>
-        <tr><td>#2</td><td><span class="badge comp-pass">PASS</span></td><td>0.0086</td><td>0.0069</td><td>0.0278</td><td>0.0008</td><td>within_thresholds</td><td>xxk-2 构图修复</td></tr><tr><td>#3</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0389</td><td>0.0083</td><td>0.0351</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#4</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.2628</td><td>upper_fill_delta=0.263>0.18</td><td>lane 媒体</td></tr><tr><td>#6</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1078</td><td>0.025</td><td>0.1111</td><td>0.1896</td><td>subject_cx_delta=0.108>0.08; horizon_delta=0.111>0.06; upper_fill_delta=0.190>0.18</td><td>humanoid 媒体</td></tr><tr><td>#9</td><td><span class="badge comp-fail">FAIL</span></td><td>0.032</td><td>0.0389</td><td>0.2333</td><td>0.0451</td><td>subject_area_rel=0.405>0.25; horizon_delta=0.233>0.06</td><td>humanoid 媒体</td></tr><tr><td>#13</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.1</td><td>0.0503</td><td>horizon_delta=0.100>0.06</td><td>lane 媒体</td></tr><tr><td>#14</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0891</td><td>0.025</td><td>0.0028</td><td>0.1158</td><td>subject_cx_delta=0.089>0.08</td><td>humanoid 媒体</td></tr><tr><td>#16</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0139</td><td>0.0028</td><td>0.0588</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#20</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.0167</td><td>0.4729</td><td>upper_fill_delta=0.473>0.18</td><td>修后 opening（NAS）；humanoid 旧图另 FAIL</td></tr><tr><td>#21</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.0889</td><td>0.0162</td><td>horizon_delta=0.089>0.06</td><td>humanoid 媒体</td></tr><tr><td>#22</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0306</td><td>0.0278</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#33</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.1361</td><td>0.0156</td><td>horizon_delta=0.136>0.06</td><td>lane 媒体</td></tr><tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0194</td><td>0.0287</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#58</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1086</td><td>0.025</td><td>0.0139</td><td>0.1992</td><td>subject_cx_delta=0.109>0.08; upper_fill_delta=0.199>0.18</td><td>lane 媒体</td></tr><tr><td>#63</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.15</td><td>0.0469</td><td>horizon_delta=0.150>0.06</td><td>lane 媒体</td></tr><tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.05</td><td>0.0247</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#155</td><td><span class="badge comp-fail">FAIL</span></td><td>0.275</td><td>0.2667</td><td>0.3389</td><td>0.0018</td><td>subject_cx_delta=0.275>0.08; subject_cy_delta=0.267>0.08; subject_area_rel=0.840>0.25; horizon_delta=0.339>0.06</td><td>lane 媒体</td></tr><tr><td>#157</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.2472</td><td>0.1255</td><td>horizon_delta=0.247>0.06</td><td>lane 媒体</td></tr><tr><td>#159</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0417</td><td>0.0379</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#167</td><td><span class="badge comp-fail">FAIL</span></td><td>0.2609</td><td>0.0056</td><td>0.275</td><td>0.1511</td><td>subject_cx_delta=0.261>0.08; subject_area_rel=0.694>0.25; horizon_delta=0.275>0.06</td><td>lane 媒体</td></tr>
+        <tr><td>#2</td><td><span class="badge comp-pass">PASS</span></td><td>0.0086</td><td>0.0069</td><td>0.0278</td><td>0.0008</td><td>within_thresholds</td><td>xxk-2 构图修复</td></tr><tr><td>#3</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0389</td><td>0.0083</td><td>0.0351</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#4</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0261</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#6</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1078</td><td>0.025</td><td>0.1111</td><td>0.1896</td><td>subject_cx_delta=0.108>0.08; horizon_delta=0.111>0.06; upper_fill_delta=0.190>0.18</td><td>humanoid 媒体</td></tr><tr><td>#9</td><td><span class="badge comp-fail">FAIL</span></td><td>0.032</td><td>0.0389</td><td>0.2333</td><td>0.0451</td><td>subject_area_rel=0.405>0.25; horizon_delta=0.233>0.06</td><td>humanoid 媒体</td></tr><tr><td>#13</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0508</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#14</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0891</td><td>0.025</td><td>0.0028</td><td>0.1158</td><td>subject_cx_delta=0.089>0.08</td><td>humanoid 媒体</td></tr><tr><td>#16</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0139</td><td>0.0028</td><td>0.0588</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#20</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.0167</td><td>0.4729</td><td>upper_fill_delta=0.473>0.18</td><td>修后 opening（NAS）；humanoid 旧图另 FAIL</td></tr><tr><td>#21</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0028</td><td>0.0163</td><td>within_thresholds</td><td>xxk-3 构图修复（人形）</td></tr><tr><td>#22</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0306</td><td>0.0278</td><td>within_thresholds</td><td>humanoid 媒体</td></tr><tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0179</td><td>within_thresholds</td><td>xxk-3 构图修复</td></tr><tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0194</td><td>0.0287</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#58</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1086</td><td>0.025</td><td>0.0139</td><td>0.1992</td><td>subject_cx_delta=0.109>0.08; upper_fill_delta=0.199>0.18</td><td>lane 媒体</td></tr><tr><td>#63</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.15</td><td>0.0469</td><td>horizon_delta=0.150>0.06</td><td>lane 媒体</td></tr><tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.05</td><td>0.0247</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#155</td><td><span class="badge comp-fail">FAIL</span></td><td>0.275</td><td>0.2667</td><td>0.3389</td><td>0.0018</td><td>subject_cx_delta=0.275>0.08; subject_cy_delta=0.267>0.08; subject_area_rel=0.840>0.25; horizon_delta=0.339>0.06</td><td>lane 媒体</td></tr><tr><td>#157</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0</td><td>0.0194</td><td>0.2472</td><td>0.1255</td><td>horizon_delta=0.247>0.06</td><td>lane 媒体</td></tr><tr><td>#159</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0417</td><td>0.0379</td><td>within_thresholds</td><td>lane 媒体</td></tr><tr><td>#167</td><td><span class="badge comp-fail">FAIL</span></td><td>0.2609</td><td>0.0056</td><td>0.275</td><td>0.1511</td><td>subject_cx_delta=0.261>0.08; subject_area_rel=0.694>0.25; horizon_delta=0.275>0.06</td><td>lane 媒体</td></tr>
       </tbody>
     </table>
 
@@ -300,10 +301,10 @@
       <div class="card-head">
         <h2>#21</h2>
                 <span class="badge hum">人形 OK</span>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
         <span class="lane-tag">L3</span>
       </div>
-      <p class="why"><strong>L3 · 海滩青年 · 构图未过：</strong>horizon_delta=0.089>0.06。人形+走路此前已接；构图须重做后才可标构图 PASS。（cxΔ=0.0 horizonΔ=0.0889 upper_fillΔ=0.0162）</p>
+      <p class="why pass"><strong>L3 · 海滩青年 · ACCEPT：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0163）；createHumanoidWorld + uefn-mannequin 保留；默认跟镜/走路；可通行；影子不验收；无投影贴图；motion 已录。</p>
       <div class="pair">
         <figure>
           <img src="media/humanoid/case21/official.jpg" alt="官方首帧 #21" loading="lazy" />
@@ -311,7 +312,7 @@
         </figure>
         <figure>
           <img src="media/humanoid/case21/opening.jpg" alt="opening-gate #21" loading="lazy" />
-          <figcaption>opening-gate（人形重写）</figcaption>
+          <figcaption>opening-gate（构图修复）</figcaption>
         </figure>
       </div>
       <figure class="side-block">
@@ -384,10 +385,10 @@
     <article class="card" id="lane1-case33">
       <div class="card-head">
         <h2>#33</h2>
-        <span class="badge fail">FAIL · 构图</span>
+        <span class="badge pass">PASS · 构图</span>
         <span class="lane-tag">LANE1</span>
       </div>
-      <p class="why"><strong>为什么 FAIL：</strong>中殿、走道、成对长椅、高窗与祭坛都有，但建筑雕刻、会众、窗格划分、前景轮廓与拱顶比例仍简化，未锁死官方首帧。</p>
+      <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0361 upper_fillΔ=0.0179）；中殿过道 FP；祭坛远景保留；中心走道可通行；norectex；影子不验收；motion 已重录。</p>
       <div class="pair">
         <figure>
           <img src="media/lane1/case33/official.jpg" alt="官方首帧 #33" loading="lazy" />
@@ -468,10 +469,10 @@
     <article class="card" id="lane1-case4">
       <div class="card-head">
         <h2>#4</h2>
-        <span class="badge skip">SKIP · gold</span>
+        <span class="badge pass">PASS · 构图</span>
         <span class="lane-tag">LANE1</span>
       </div>
-      <p class="why skip"><strong>说明：</strong>用既有金样交付；本轮 Lane1 跳过重做。下方为金样 opening 参考与运动片。</p>
+      <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0261）；norectex 重做非金样跳过；可通行；影子不验收；无投影贴图；motion 已录。</p>
       <div class="pair">
         <figure>
           <img src="media/lane1/case4/official.jpg" alt="官方首帧 #4" loading="lazy" />
@@ -496,10 +497,10 @@
     <article class="card" id="lane2-case13">
       <div class="card-head">
         <h2>#13</h2>
-        <span class="badge pass">PASS</span>
+        <span class="badge pass">PASS · 构图</span>
         <span class="lane-tag">LANE2</span>
       </div>
-      <p class="why pass"><strong>结论：</strong>倒 U 形长猫毛绒 + 右侧紫色湿巾包；构图对齐官方，颜色风格化。</p>
+      <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0 cyΔ=0.0194 area_rel=0.0406 horizonΔ=0.0028 upper_fillΔ=0.0508）；倒 U 形长猫毛绒 + 右侧湿巾包；可通行；norectex；影子不验收；motion 已录。</p>
       <div class="pair">
         <figure>
           <img src="media/lane2/case13/official.jpg" alt="官方首帧 #13" loading="lazy" />
@@ -740,10 +741,10 @@
     <article class="card" id="lane3-case21">
       <div class="card-head">
         <h2>#21</h2>
-        <span class="badge pass">PASS</span>
+        <span class="badge pass">PASS · 构图</span>
         <span class="lane-tag">LANE3</span>
       </div>
-      <p class="why pass"><strong>结论：</strong>构图与形状锁通过；无投影贴图；运动片齐全。</p>
+      <p class="why pass"><strong>结论：</strong>composition gate PASS（horizonΔ=0.0028）；人形 createHumanoidWorld 保留；无投影贴图；motion 已录。</p>
       <div class="pair">
         <figure>
           <img src="media/lane3/case21/official.jpg" alt="官方首帧 #21" loading="lazy" />
