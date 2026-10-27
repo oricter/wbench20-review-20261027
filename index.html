@@ -76,8 +76,8 @@
         <div class="summary">
       <div class="pill"><div class="label">开场锁定 PASS</div><div class="value"> · mae≤8</div></div>
       <div class="pill"><div class="label">开场锁定 FAIL</div><div class="value"> · 无</div></div>
-      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">17 题</span> · 见表</div></div>
-      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">3 题</span> · #2/#9/#63</div></div>
+      <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">18 题</span> · 见表</div></div>
+      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">2 题</span> · #2/#9</div></div>
     </div>
 
     <nav class="nav" aria-label="分段跳转">
@@ -100,13 +100,13 @@
     <table class="comp-table">
       <thead><tr><th>题</th><th>Lane</th><th>开场锁定</th><th>MAE</th></tr></thead>
       <tbody>
-        <tr><td>#2</td><td>L4</td><td></td><td>1.0270</td></tr><tr><td>#3</td><td>L1</td><td></td><td>1.3653</td></tr><tr><td>#4</td><td>L1</td><td></td><td>4.0625</td></tr><tr><td>#6</td><td>L2</td><td></td><td>1.4357</td></tr><tr><td>#9</td><td>L3</td><td></td><td>3.8883</td></tr><tr><td>#13</td><td>L2</td><td></td><td>7.6703</td></tr><tr><td>#14</td><td>L4</td><td></td><td>1.5515</td></tr><tr><td>#16</td><td>L1</td><td></td><td>1.0890</td></tr><tr><td>#20</td><td>L2</td><td></td><td>1.5527</td></tr><tr><td>#21</td><td>L3</td><td></td><td>1.2150</td></tr><tr><td>#22</td><td>L4</td><td></td><td>1.4515</td></tr><tr><td>#33</td><td>L1</td><td></td><td>1.3150</td></tr><tr><td>#45</td><td>L3</td><td></td><td>1.5195</td></tr><tr><td>#58</td><td>L4</td><td></td><td>1.3728</td></tr><tr><td>#63</td><td>L2</td><td></td><td>0.0000</td></tr><tr><td>#136</td><td>L1</td><td></td><td>0.6356</td></tr><tr><td>#155</td><td>L2</td><td></td><td>1.0670</td></tr><tr><td>#157</td><td>L3</td><td></td><td>0.7975</td></tr><tr><td>#159</td><td>L4</td><td></td><td>0.9864</td></tr><tr><td>#167</td><td>L3</td><td></td><td>1.1181</td></tr>
+        <tr><td>#2</td><td>L4</td><td></td><td>1.0270</td></tr><tr><td>#3</td><td>L1</td><td></td><td>1.3653</td></tr><tr><td>#4</td><td>L1</td><td></td><td>4.0625</td></tr><tr><td>#6</td><td>L2</td><td></td><td>1.4357</td></tr><tr><td>#9</td><td>L3</td><td></td><td>3.8883</td></tr><tr><td>#13</td><td>L2</td><td></td><td>7.6703</td></tr><tr><td>#14</td><td>L4</td><td></td><td>1.5515</td></tr><tr><td>#16</td><td>L1</td><td></td><td>1.0890</td></tr><tr><td>#20</td><td>L2</td><td></td><td>1.5527</td></tr><tr><td>#21</td><td>L3</td><td></td><td>1.2150</td></tr><tr><td>#22</td><td>L4</td><td></td><td>1.4515</td></tr><tr><td>#33</td><td>L1</td><td></td><td>1.3150</td></tr><tr><td>#45</td><td>L3</td><td></td><td>1.5195</td></tr><tr><td>#58</td><td>L4</td><td></td><td>1.3728</td></tr><tr><td>#63</td><td>L2</td><td></td><td>1.3108</td></tr><tr><td>#136</td><td>L1</td><td></td><td>0.6356</td></tr><tr><td>#155</td><td>L2</td><td></td><td>1.0670</td></tr><tr><td>#157</td><td>L3</td><td></td><td>0.7975</td></tr><tr><td>#159</td><td>L4</td><td></td><td>0.9864</td></tr><tr><td>#167</td><td>L3</td><td></td><td>1.1181</td></tr>
       </tbody>
     </table>
 
     <h2 class="section-title" id="sec-comp-gate">构图门禁 SUMMARY（20 题）</h2>
     <p class="section-note">阈值：subject cx/cy ≤0.08；area_rel ≤0.25；horizon ≤0.06；upper_fill ≤0.18。影子不验收；必须可通行。脚本含 upper_fill（近景建筑占比）。</p>
-    <p class="why pass"><strong>2026-10-28 00:20 CST FAIL10 official-mask 收口中：</strong>新 PASS 7 题（#6, #16, #21, #58, #155, #157, #159）；诚实 FAIL #2（area_rel=0.363，12 轮耗尽，统一相机/尺度流程无脏补丁）；#9 诚实 FAIL（12 轮+录后重跑仍 area/horizon）；#63 fixing（L3，horizonΔ=0.425）。原 PASS 10 题保留。规则：改 camera/opening/重录后必须重跑构图门禁，禁止沿用旧徽章。指标见下表 + qc/fail10_regate_officialmask.tsv。</p>
+    <p class="why pass"><strong>2026-10-28 00:28 CST FAIL10 official-mask 收口完成：</strong>新 PASS 8 题（#6, #16, #21, #58, #63, #155, #157, #159）；诚实 FAIL 2 题——#2 area_rel=0.363（12 轮统一相机/尺度耗尽）、#9 area_rel=0.514 + horizonΔ=0.494（12 轮+录后重跑仍 FAIL）。原 PASS 10 题保留 → 合计 <strong>18 PASS / 2 FAIL</strong>。规则：改 camera/opening/重录后必须重跑构图门禁，禁止沿用旧徽章。TSV：qc/fail10_regate_officialmask.tsv。</p>
     <table class="comp-table">
       <thead><tr><th>题</th><th>门禁</th><th>cxΔ</th><th>cyΔ</th><th>horizonΔ</th><th>upper_fillΔ</th><th>原因</th><th>来源</th></tr></thead>
       <tbody>
@@ -124,7 +124,7 @@
 <tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0149</td><td>within_thresholds · area_rel=0.0406</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
 <tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0028</td><td>0.0194</td><td>0.0222</td><td>within_thresholds · area_rel=0.1584</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
         <tr><td>#58</td><td><span class="badge comp-pass">PASS</span></td><td>0.0141</td><td>0.0181</td><td>0.0083</td><td>0.1189</td><td>within_thresholds · area_rel=0.0013</td><td>FAIL10 official-mask fix+post-record re-gate 2026-10-28</td></tr>
-        <tr><td>#63</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.425</td><td>0.0564</td><td>horizon_delta=0.425>0.06</td><td>FAIL10 pending (L3 after #9); stale metrics until post-fix re-gate</td></tr>
+        <tr><td>#63</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0014</td><td>0.0111</td><td>0.044</td><td>within_thresholds · area_rel=0.1619</td><td>FAIL10 official-mask: fresh capture + post-record re-gate; ol mae=1.3108</td></tr>
 <tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0611</td><td>0.05</td><td>0.0263</td><td>within_thresholds · area_rel=0.1735</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
         <tr><td>#155</td><td><span class="badge comp-pass">PASS</span></td><td>0</td><td>0.0014</td><td>0.0028</td><td>0.0019</td><td>within_thresholds · area_rel=0.0343</td><td>FAIL10 official-mask fix+post-record re-gate 2026-10-28</td></tr>
         <tr><td>#157</td><td><span class="badge comp-pass">PASS</span></td><td>0.0094</td><td>0.0097</td><td>0.0417</td><td>0.1298</td><td>within_thresholds · area_rel=0.0159</td><td>FAIL10 official-mask fix+post-record re-gate 2026-10-28</td></tr>
@@ -598,18 +598,18 @@
     <article class="card" id="lane2-case63">
       <div class="card-head">
         <h2>#63</h2>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
-        <span class="badge ol-pass">开场锁定 PASS · mae=0.0000</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.3108</span>
         <span class="lane-tag">LANE2</span>
       </div>
-      <p class="why fail"><strong>结论：</strong>composition gate FAIL（mask；cxΔ=0.0016 cyΔ=0.0014 area_rel=0.1619 horizonΔ=0.425 upper_fillΔ=0.0563；锈钢桁架+橙桨远离机+门楣/FADED；中央可飞通道；无投影贴图；影子不验收。motion 未本轮重录（构图帧已刷新）。</p>
+      <p class="blurb why pass"><strong>L2 · 锈桁架无人机 · 构图门禁 PASS：</strong>cxΔ=0.0016 cyΔ=0.0014 area_rel=0.1619 horizonΔ=0.0111 upper_fillΔ=0.044；FAIL10：修复黑帧 capture 后新开场即过官方 mask；录后重跑仍 PASS；opening-lock mae=1.3108；非人形；可通行；影子不追；无投影。</p>
       <div class="pair">
         <figure>
           <img src="media/lane2/case63/official.jpg" alt="官方首帧 #63" loading="lazy" />
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/lane2/case63/opening.jpg?v=ol3" alt="opening-gate #63" loading="lazy" />
+          <img src="media/lane2/case63/opening.jpg?v=fail10" alt="opening-gate #63" loading="lazy" />
           <figcaption>opening-gate</figcaption>
         </figure>
       </div>
