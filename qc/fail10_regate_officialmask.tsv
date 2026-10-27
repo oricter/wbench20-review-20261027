@@ -1,0 +1,11 @@
+case	pass	cx	cy	area	horizon	upper_fill	reasons	opening_lock	note
+2	False	0.0016	0.0417	0.3631	0.0139	0.0008	subject_area_rel=0.363>0.25	mae=1.0270	final
+6	True	0.0008	0	0.1656	0	0.1494	within_thresholds	mae=1.4357	final
+9	False	0.0016	0.0417	0.514	0.4944	0.046	subject_area_rel=0.514>0.25;horizon_delta=0.494>0.06		fixing
+16	True	0.0016	0.0181	0.0829	0.0139	0.0588	within_thresholds	mae=1.0890	final
+21	True	0.0016	0.0694	0.0533	0.0528	0.0163	within_thresholds	mae=1.2150	final
+58	True	0.0141	0.0181	0.0013	0.0083	0.1189	within_thresholds	mae=1.3728	final
+63	False	0.0016	0.0014	0.1619	0.425	0.0564	horizon_delta=0.425>0.06	mae=0.0000	pending
+155	True	0	0.0014	0.0343	0.0028	0.0019	within_thresholds	mae=1.0670	final
+157	True	0.0094	0.0097	0.0159	0.0417	0.1298	within_thresholds	mae=0.7975	final
+159	True	0.0047	0.0236	0.1809	0.05	0.036	within_thresholds	mae=0.9864	final
