@@ -77,7 +77,7 @@
       <div class="pill"><div class="label">开场锁定 PASS</div><div class="value"> · mae≤8</div></div>
       <div class="pill"><div class="label">开场锁定 FAIL</div><div class="value"> · 无</div></div>
       <div class="pill"><div class="label">构图门禁 PASS</div><div class="value"><span class="badge comp-pass">5 题</span> · 见表</div></div>
-      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">15 题</span> · #2/#3/#4/#6/#9/#14…</div></div>
+      <div class="pill"><div class="label">构图门禁 FAIL</div><div class="value"><span class="badge comp-fail">10 题</span> · #2/#6/#9/#16/#21/#58…</div></div>
     </div>
 
     <nav class="nav" aria-label="分段跳转">
@@ -100,36 +100,36 @@
     <table class="comp-table">
       <thead><tr><th>题</th><th>Lane</th><th>开场锁定</th><th>MAE</th></tr></thead>
       <tbody>
-        <tr><td>#2</td><td>L4</td><td></td><td>1.3307</td></tr><tr><td>#3</td><td>L1</td><td></td><td>1.4851</td></tr><tr><td>#4</td><td>L1</td><td></td><td>4.0625</td></tr><tr><td>#6</td><td>L2</td><td></td><td>1.2781</td></tr><tr><td>#9</td><td>L3</td><td></td><td>3.8883</td></tr><tr><td>#13</td><td>L2</td><td></td><td>7.6703</td></tr><tr><td>#14</td><td>L4</td><td></td><td>1.5515</td></tr><tr><td>#16</td><td>L1</td><td></td><td>1.0741</td></tr><tr><td>#20</td><td>L2</td><td></td><td>1.5527</td></tr><tr><td>#21</td><td>L3</td><td></td><td>1.4493</td></tr><tr><td>#22</td><td>L4</td><td></td><td>1.4515</td></tr><tr><td>#33</td><td>L1</td><td></td><td>1.3150</td></tr><tr><td>#45</td><td>L3</td><td></td><td>1.5195</td></tr><tr><td>#58</td><td>L4</td><td></td><td>1.2851</td></tr><tr><td>#63</td><td>L2</td><td></td><td>0.0000</td></tr><tr><td>#136</td><td>L1</td><td></td><td>0.6356</td></tr><tr><td>#155</td><td>L2</td><td></td><td>4.7490</td></tr><tr><td>#157</td><td>L3</td><td></td><td>6.8149</td></tr><tr><td>#159</td><td>L4</td><td></td><td>1.0387</td></tr><tr><td>#167</td><td>L3</td><td></td><td>1.1181</td></tr>
+        <tr><td>#2</td><td>L4</td><td></td><td>1.3307</td></tr><tr><td>#3</td><td>L1</td><td></td><td>1.3653</td></tr><tr><td>#4</td><td>L1</td><td></td><td>4.0625</td></tr><tr><td>#6</td><td>L2</td><td></td><td>1.2781</td></tr><tr><td>#9</td><td>L3</td><td></td><td>3.8883</td></tr><tr><td>#13</td><td>L2</td><td></td><td>7.6703</td></tr><tr><td>#14</td><td>L4</td><td></td><td>1.5515</td></tr><tr><td>#16</td><td>L1</td><td></td><td>1.0741</td></tr><tr><td>#20</td><td>L2</td><td></td><td>1.5527</td></tr><tr><td>#21</td><td>L3</td><td></td><td>1.4493</td></tr><tr><td>#22</td><td>L4</td><td></td><td>1.4515</td></tr><tr><td>#33</td><td>L1</td><td></td><td>1.3150</td></tr><tr><td>#45</td><td>L3</td><td></td><td>1.5195</td></tr><tr><td>#58</td><td>L4</td><td></td><td>1.2851</td></tr><tr><td>#63</td><td>L2</td><td></td><td>0.0000</td></tr><tr><td>#136</td><td>L1</td><td></td><td>0.6356</td></tr><tr><td>#155</td><td>L2</td><td></td><td>4.7490</td></tr><tr><td>#157</td><td>L3</td><td></td><td>6.8149</td></tr><tr><td>#159</td><td>L4</td><td></td><td>1.0387</td></tr><tr><td>#167</td><td>L3</td><td></td><td>1.1181</td></tr>
       </tbody>
     </table>
 
     <h2 class="section-title" id="sec-comp-gate">构图门禁 SUMMARY（20 题）</h2>
     <p class="section-note">阈值：subject cx/cy ≤0.08；area_rel ≤0.25；horizon ≤0.06；upper_fill ≤0.18。影子不验收；必须可通行。脚本含 upper_fill（近景建筑占比）。</p>
-    <p class="why fail"><strong>2026-10-27 21:30 全量重跑：</strong>对着 Pages 现 opening+official 重跑 composition_gate.py（官方 mask 优先）。PASS 5 题（#13, #20, #33, #45, #167）；FAIL 15 题（假 PASS 已纠标）。<strong>#3 优先修</strong>：旧徽章 cxΔ=0.007 作废；现跑无 mask cxΔ=0.088 FAIL / 有 mask area_rel=0.369 FAIL；开场锁定 mae=1.4851 仍 PASS（独立门禁）。规则：改 camera/opening/重录后必须重跑构图门禁，禁止沿用旧 PASS。TSV：qc/composition_gate_all20_rerun_20261027.tsv。</p>
+    <p class="why fail"><strong>2026-10-27 21:48 全量重跑（gate 窄列回收修补后）：</strong>对着 Pages 现 opening+official 重跑 composition_gate.py（官方 mask 优先）。PASS 10 题（#3, #4, #13, #14, #20, #22, #33, #45, #136, #167）；FAIL 10 题（#2/#6/#9/#16/#21/#58/#63/#155/#157/#159）。<strong>#3 已修过门禁</strong>：相机 dist=4.15、跨栏右移~3m、重录；cxΔ=0.0016 cyΔ=0.0181 area_rel=0.0647 horizonΔ=0.0083 upper_fillΔ=0.0351；开场锁定 mae=1.3653 PASS。规则：改 camera/opening/重录后必须重跑构图门禁，禁止沿用旧 PASS。TSV：qc/composition_gate_all20_rerun_20261027.tsv。</p>
     <table class="comp-table">
       <thead><tr><th>题</th><th>门禁</th><th>cxΔ</th><th>cyΔ</th><th>horizonΔ</th><th>upper_fillΔ</th><th>原因</th><th>来源</th></tr></thead>
       <tbody>
-        <tr><td>#2</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0055</td><td>0.0292</td><td>0.0167</td><td>0.0008</td><td>subject_area_rel · area_rel=0.6319</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#3</td><td><span class="badge comp-fail">FAIL</span></td><td>0.088</td><td>0.025</td><td>0.003</td><td>0.035</td><td>subject_cx_delta · area_rel=0.209</td><td>现跑无mask cxΔ=0.0875；有mask area_rel=0.369；旧徽章cxΔ=0.007作废</td></tr>
-        <tr><td>#4</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0008</td><td>0.0014</td><td>0.0028</td><td>0.0261</td><td>subject_area_rel · area_rel=0.3699</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#6</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.1222</td><td>0.1197</td><td>subject_area_rel · area_rel=0.3747</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#9</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0</td><td>0.0056</td><td>0.0459</td><td>subject_area_rel · area_rel=0.3692</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#13</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0</td><td>0.0028</td><td>0.0494</td><td>within_thresholds · area_rel=0.1599 · area_rel=0.1599</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#14</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.0</td><td>0.1159</td><td>subject_area_rel · area_rel=0.3729</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#16</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0</td><td>0.1028</td><td>0.0588</td><td>subject_area_rel · area_rel=0.3728</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#20</td><td><span class="badge comp-pass">PASS</span></td><td>0.0391</td><td>0.0347</td><td>0.0139</td><td>0.1295</td><td>within_thresholds · area_rel=0.2399 · area_rel=0.2399</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#21</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.0028</td><td>0.0162</td><td>subject_area_rel · area_rel=0.3773</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#22</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.0306</td><td>0.0277</td><td>subject_area_rel · area_rel=0.3766</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0149</td><td>within_thresholds · area_rel=0.0406 · area_rel=0.0406</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0028</td><td>0.0194</td><td>0.0222</td><td>within_thresholds · area_rel=0.1584 · area_rel=0.1584</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#58</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1156</td><td>0.0111</td><td>0.0056</td><td>0.1296</td><td>subject_cx_delta · area_rel=0.54</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#63</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.425</td><td>0.0563</td><td>horizon_delta=0.425>0.06 · area_rel=0.1619</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#136</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0008</td><td>0.0</td><td>0.05</td><td>0.0263</td><td>subject_area_rel · area_rel=0.3623</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#155</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0094</td><td>0.1736</td><td>0.3389</td><td>0.0018</td><td>subject_cy_delta · area_rel=0.3558</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#157</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0008</td><td>0.0014</td><td>0.2472</td><td>0.1255</td><td>subject_area_rel · area_rel=0.3792</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#159</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1406</td><td>0.1667</td><td>0.0417</td><td>0.0379</td><td>subject_cx_delta · area_rel=0.2727</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
-        <tr><td>#167</td><td><span class="badge comp-pass">PASS</span></td><td>0.0172</td><td>0.0111</td><td>0.025</td><td>0.1552</td><td>within_thresholds · area_rel=0.151 · area_rel=0.151</td><td>20261027 夜全量重跑(官方mask优先)</td></tr>
+        <tr><td>#2</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0417</td><td>0.0167</td><td>0.0008</td><td>subject_area_rel=0.363>0.25</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#3</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0181</td><td>0.0083</td><td>0.0351</td><td>within_thresholds · area_rel=0.0647</td><td>已修 dist=4.15+跨栏右移；ol mae=1.3653；gate窄列回收</td></tr>
+        <tr><td>#4</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0069</td><td>0.0028</td><td>0.0261</td><td>within_thresholds · area_rel=0.0963</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#6</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0008</td><td>0.0583</td><td>0.1222</td><td>0.1197</td><td>subject_area_rel=0.289>0.25 · horizon_delta=0.122>0.06</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#9</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0708</td><td>0.0056</td><td>0.0459</td><td>subject_area_rel=0.306>0.25</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#13</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0</td><td>0.0028</td><td>0.0494</td><td>within_thresholds · area_rel=0.1599</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#14</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0347</td><td>0.0</td><td>0.1159</td><td>within_thresholds · area_rel=0.2377</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#16</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0333</td><td>0.1028</td><td>0.0588</td><td>horizon_delta=0.103>0.06</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#20</td><td><span class="badge comp-pass">PASS</span></td><td>0.0391</td><td>0.0347</td><td>0.0139</td><td>0.1295</td><td>within_thresholds · area_rel=0.2399</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#21</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.1444</td><td>0.0028</td><td>0.0162</td><td>subject_cy_delta=0.144>0.08 · subject_area_rel=0.255>0.25</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#22</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0361</td><td>0.0306</td><td>0.0277</td><td>within_thresholds · area_rel=0.0376</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#33</td><td><span class="badge comp-pass">PASS</span></td><td>0.0</td><td>0.0194</td><td>0.0361</td><td>0.0149</td><td>within_thresholds · area_rel=0.0406</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#45</td><td><span class="badge comp-pass">PASS</span></td><td>0.0008</td><td>0.0028</td><td>0.0194</td><td>0.0222</td><td>within_thresholds · area_rel=0.1584</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#58</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0008</td><td>0.05</td><td>0.0056</td><td>0.1296</td><td>subject_area_rel=0.348>0.25</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#63</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0014</td><td>0.425</td><td>0.0563</td><td>horizon_delta=0.425>0.06</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#136</td><td><span class="badge comp-pass">PASS</span></td><td>0.0016</td><td>0.0611</td><td>0.05</td><td>0.0263</td><td>within_thresholds · area_rel=0.1735</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#155</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0069</td><td>0.3389</td><td>0.0018</td><td>horizon_delta=0.339>0.06</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#157</td><td><span class="badge comp-fail">FAIL</span></td><td>0.0016</td><td>0.0</td><td>0.2472</td><td>0.1255</td><td>horizon_delta=0.247>0.06</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#159</td><td><span class="badge comp-fail">FAIL</span></td><td>0.1406</td><td>0.1667</td><td>0.0417</td><td>0.0379</td><td>subject_cx_delta=0.141>0.08 · subject_cy_delta=0.167>0.08 · subject_area_rel=0.273>0.25</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
+        <tr><td>#167</td><td><span class="badge comp-pass">PASS</span></td><td>0.0172</td><td>0.0111</td><td>0.025</td><td>0.1552</td><td>within_thresholds · area_rel=0.151</td><td>20261027 21:48 全量重跑(gate修补+官方mask)</td></tr>
       </tbody>
     </table>
 
@@ -168,30 +168,31 @@
       <div class="card-head">
         <h2>#3</h2>
                 <span class="badge hum">人形 OK</span>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
-        <span class="badge ol-pass">开场锁定 PASS · mae=1.4851</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
+        <span class="badge ol-pass">开场锁定 PASS · mae=1.3653</span>
         <span class="lane-tag">L1</span>
       </div>
-      <p class="blurb why fail"><strong>L1 · 田径运动员 · 构图门禁 FAIL：</strong>cxΔ=0.088 cyΔ=0.025 area_rel=0.209 horizonΔ=0.003 upper_fillΔ=0.035；原因 subject_cx_delta（现跑无 mask cxΔ=0.0875&gt;0.08；有 mask area_rel=0.369&gt;0.25）。旧徽章 cxΔ=0.007 作废——开场锁定改机位后未重跑构图门禁。开场锁定 PASS · mae=1.4851（独立门禁，可保留）。uefn-mannequin + createHumanoidWorld；无投影；修复队列优先。</p>
+      <p class="blurb why pass"><strong>L1 · 田径运动员 · 构图门禁 PASS：</strong>cxΔ=0.0016 cyΔ=0.0181 area_rel=0.0647 horizonΔ=0.0083 upper_fillΔ=0.0351；原因 within_thresholds。修复：相机 dist=4.15、跨栏右移约 3m、强制重跑新构图门禁并 opening-lock 重录（mae=1.3653）。uefn-mannequin + createHumanoidWorld；无投影。</p>
       <div class="pair">
         <figure>
           <img src="media/humanoid/case3/official.jpg" alt="官方首帧 #3" loading="lazy" />
           <figcaption>官方首帧</figcaption>
         </figure>
         <figure>
-          <img src="media/humanoid/case3/opening.jpg" alt="opening-gate #3" loading="lazy" />
+          <img src="media/humanoid/case3/opening.jpg?v=fix3" alt="opening-gate #3" loading="lazy" />
           <figcaption>opening-gate（人形重写）</figcaption>
         </figure>
       </div>
       <figure class="side-block">
-        <img src="media/humanoid/case3/side.jpg" alt="side-gate #3" loading="lazy" />
+        <img src="media/humanoid/case3/side.jpg?v=fix3" alt="side-gate #3" loading="lazy" />
         <figcaption>side-gate（骨架体积）</figcaption>
       </figure>
       <figure class="video-block">
-        <video controls playsinline preload="metadata" src="media/humanoid/case3/motion.mp4"></video>
+        <video controls playsinline preload="metadata" src="media/humanoid/case3/motion.mp4?v=fix3"></video>
         <figcaption>motion · 页内播放（web 版）</figcaption>
       </figure>
     </article>
+
 
     <article class="card hum-card" id="hum-case6">
       <div class="card-head">
@@ -252,7 +253,7 @@
       <div class="card-head">
         <h2>#14</h2>
                 <span class="badge hum">人形 OK</span>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
         <span class="badge ol-pass">开场锁定 PASS · mae=1.5515</span>
         <span class="lane-tag">L4</span>
       </div>
@@ -367,7 +368,7 @@
       <div class="card-head">
         <h2>#22</h2>
                 <span class="badge hum">人形 OK</span>
-        <span class="badge comp-fail">构图门禁 FAIL</span>
+        <span class="badge comp-pass">构图门禁 PASS</span>
         <span class="badge ol-pass">开场锁定 PASS · mae=1.4515</span>
         <span class="lane-tag">L4</span>
       </div>
@@ -516,7 +517,7 @@
         <span class="badge ol-pass">开场锁定 PASS · mae=4.0625</span>
         <span class="lane-tag">LANE1</span>
       </div>
-      <p class="why fail"><strong>结论：</strong>composition gate FAIL（cxΔ=0.0008 cyΔ=0.0014 area_rel=0.3699 horizonΔ=0.0028 upper_fillΔ=0.0261；norectex 重做非金样跳过；可通行；影子不验收；无投影贴图；motion 已录。</p>
+      <p class="why pass"><strong>结论：</strong>composition gate PASS（cxΔ=0.0008 cyΔ=0.0069 area_rel=0.0963 horizonΔ=0.0028 upper_fillΔ=0.0261；norectex 重做非金样跳过；可通行；影子不验收；无投影贴图；motion 已录。</p>
       <div class="pair">
         <figure>
           <img src="media/lane1/case4/official.jpg" alt="官方首帧 #4" loading="lazy" />

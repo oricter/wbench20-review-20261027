@@ -45,3 +45,6 @@ Hanna 2026-10-27：构图必须与官方首帧相同；颜色可近似；禁止�
 - shared `capture_gates_lane.sh`：mae≤8 时不覆盖 opening-gate。
 - 改 camera/main 后必须 `compile_playable.sh`。
 - 新录任何题都走上述 shared 脚本，禁止旁路单题特判。
+
+## Detector note (2026-10-27 21:48)
+Standing-person color-match: when the first CC is too wide (dark seats/shadows glued to subject), re-run CC in a narrow column around the official mask hint (`half_w ≈ 0.55 * hint_w`) and drop pixels below official feet. Heuristic over-seg clamp multipliers tightened to 1.08× so fallback can still satisfy `area_rel≤0.25`. Re-run all openings after this change.
